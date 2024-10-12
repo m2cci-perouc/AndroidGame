@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MoprionGame</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="jeu_du_morpion">Jeu du morpion</string>
+    <string name="joueur_1">Joueur 1</string>
+    <string name="fanny">Fanny</string>
+    <string name="joueur_2">Joueur 2</string>
+    <string name="lucie">Lucie</string>
+    <string name="joueur">Joueur</string>
+    <string name="play">Play</string>
+    <string name="cross">cross</string>
+</resources>
