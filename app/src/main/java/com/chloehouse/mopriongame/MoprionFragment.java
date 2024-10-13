@@ -1,5 +1,7 @@
 package com.chloehouse.mopriongame;
 
+import static android.content.Intent.getIntent;
+
 import android.os.Bundle;
 
 import androidx.annotation.DrawableRes;
@@ -14,8 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.net.URISyntaxException;
+import java.util.HashMap;
 
 
 public class MoprionFragment extends Fragment {
@@ -61,6 +67,20 @@ public class MoprionFragment extends Fragment {
         button8 = view.findViewById(R.id.button_8);
         button9 = view.findViewById(R.id.button_9);
         buttonRejouer = view.findViewById(R.id.buttonRejouer);
+        TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
+        TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            Log.d("Bundle donnees noms","Le bundle contient des donnees");
+            String nom1 = bundle.getString("nom1");
+            String nom2 = bundle.getString("nom2");
+            textJoueur1.setText(nom1);
+            textJoueur2.setText(nom2);
+
+        }else {
+            Log.e("Bundle donnees noms", "Erreur : Le Bundle est null.");
+        }
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

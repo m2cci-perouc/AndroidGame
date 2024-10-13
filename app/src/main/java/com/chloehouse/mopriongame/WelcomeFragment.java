@@ -1,5 +1,6 @@
 package com.chloehouse.mopriongame;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -86,11 +87,19 @@ public class WelcomeFragment extends Fragment {
             public void onClick(View view) {
                 Log.d("Chloe", "--- Clic ---");
 
+                //enregistrer les noms
+                Bundle bundle = new Bundle();
+                bundle.putString("nom1", textJoueur1.getText().toString());
+                bundle.putString("nom2", textJoueur2.getText().toString());
+
+                Fragment destinationFragment = new MoprionFragment();
+                destinationFragment.setArguments(bundle);
+
+
                 // Naviguer vers fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                MoprionFragment morpionFragment = MoprionFragment.newInstance();
-                fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
+                fragmentTransaction.replace(R.id.fragment_container_view, destinationFragment);
                 fragmentTransaction.commit();
             }
         });

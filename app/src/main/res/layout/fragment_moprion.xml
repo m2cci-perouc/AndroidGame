@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_marginVertical="50dp">
         <TextView
-            android:id="@+id/textViewNomJoueur2"
+            android:id="@+id/textViewNomJoueur1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/fanny"
@@ -34,7 +34,7 @@
             android:background="@color/rouge_joueur1"
             />
         <TextView
-            android:id="@+id/textViewNomJoueur1"
+            android:id="@+id/textViewNomJoueur2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/lucie"
