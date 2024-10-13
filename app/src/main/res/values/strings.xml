@@ -8,6 +8,7 @@
     <string name="joueur_2">Joueur 2</string>
     <string name="lucie">Lucie</string>
     <string name="joueur">Joueur</string>
-    <string name="play">Play</string>
+    <string name="jouer">Jouer</string>
     <string name="cross">cross</string>
+    <string name="rejouer">Rejouer</string>
 </resources>

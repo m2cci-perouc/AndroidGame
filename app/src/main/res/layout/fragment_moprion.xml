@@ -12,7 +12,7 @@
         android:padding="20dp"
         android:gravity="center"
         android:text="@string/jeu_du_morpion"
-        android:background="#3A798A"
+        android:background="@color/blue_background"
         android:textColor="@color/white"
         android:textSize="30sp"/>
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginVertical="40dp">
+        android:layout_marginVertical="50dp">
         <TextView
             android:id="@+id/textViewNomJoueur2"
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:padding="15dp"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:background="#EC1717"
+            android:background="@color/rouge_joueur1"
             />
         <TextView
             android:id="@+id/textViewNomJoueur1"
@@ -42,7 +42,7 @@
             android:padding="15dp"
             android:textSize="20sp"
             android:textColor="@color/white"
-            android:background="#03A9F4"
+            android:background="@color/bleu_joueur2"
             />
     </LinearLayout>
 
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="0dp"
         >
         <!-- Ligne 1 -->
         <ImageButton
@@ -141,5 +141,16 @@
             android:layout_below="@+id/button_6"
             />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonRejouer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:paddingHorizontal="24dp"
+        android:textSize="20sp"
+        android:backgroundTint="@color/blue_background"
+        android:text="@string/rejouer"/>
 
 </LinearLayout>

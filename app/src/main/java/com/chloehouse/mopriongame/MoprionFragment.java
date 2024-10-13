@@ -6,10 +6,14 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -25,6 +29,7 @@ public class MoprionFragment extends Fragment {
     private ImageButton button7;
     private ImageButton button8;
     private ImageButton button9;
+    private Button buttonRejouer;
 
     public static MoprionFragment newInstance() {
         MoprionFragment fragment = new MoprionFragment();
@@ -55,6 +60,7 @@ public class MoprionFragment extends Fragment {
         button7 = view.findViewById(R.id.button_7);
         button8 = view.findViewById(R.id.button_8);
         button9 = view.findViewById(R.id.button_9);
+        buttonRejouer = view.findViewById(R.id.buttonRejouer);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +122,20 @@ public class MoprionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 updateImage(button9, R.drawable.round_40px);
+            }
+        });
+
+        buttonRejouer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Chloe", "--- Clic ---");
+
+                // Naviguer vers fragment morpion
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MoprionFragment morpionFragment = MoprionFragment.newInstance();
+                fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
+                fragmentTransaction.commit();
             }
         });
     }
