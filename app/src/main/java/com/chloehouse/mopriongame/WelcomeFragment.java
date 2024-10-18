@@ -92,7 +92,7 @@ public class WelcomeFragment extends Fragment {
                 //enregistrer les noms dans viewModel
                 String player1Name = textJoueur1.getText().toString();
                 String player2Name = textJoueur2.getText().toString();
-                nameViewModel.setPlayerName(player1Name);
+                nameViewModel.setPlayerName(player1Name, player2Name);
 
                 //initialiser le fragment morpion
                 Fragment destinationFragment = new MoprionFragment();

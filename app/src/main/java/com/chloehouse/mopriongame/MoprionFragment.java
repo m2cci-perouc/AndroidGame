@@ -74,8 +74,10 @@ public class MoprionFragment extends Fragment {
         ViewModelName nameViewModel = new ViewModelProvider(requireActivity()).get(ViewModelName.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
 
-        nameViewModel.getPlayerName().observe(getViewLifecycleOwner(), textJoueur1::setText);
-
+        nameViewModel.getPlayerName().observe(getViewLifecycleOwner(), names -> {
+            textJoueur1.setText(names.first);
+            textJoueur2.setText(names.second);
+        });
         /*ViewModelName nameViewModel = new ViewModelProvider(this).get(ViewModelName.class);
         Log.i("MyTag", "afficher les noms avec modelview");
         nameViewModel.getPlayerNames().observe(getViewLifecycleOwner(), names -> {
