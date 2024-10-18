@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,17 +71,24 @@ public class MoprionFragment extends Fragment {
         TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            Log.d("Bundle donnees noms","Le bundle contient des donnees");
-            String nom1 = bundle.getString("nom1");
-            String nom2 = bundle.getString("nom2");
-            textJoueur1.setText(nom1);
-            textJoueur2.setText(nom2);
+        ViewModelName nameViewModel = new ViewModelProvider(requireActivity()).get(ViewModelName.class);
+        Log.i("ViewModelName", "nameViewModel is Initielized !");
 
-        }else {
-            Log.e("Bundle donnees noms", "Erreur : Le Bundle est null.");
-        }
+        nameViewModel.getPlayerName().observe(getViewLifecycleOwner(), textJoueur1::setText);
+
+        /*ViewModelName nameViewModel = new ViewModelProvider(this).get(ViewModelName.class);
+        Log.i("MyTag", "afficher les noms avec modelview");
+        nameViewModel.getPlayerNames().observe(getViewLifecycleOwner(), names -> {
+            Log.i("MyTag", "entre dans getPlayerNames");
+            if (names != null) {
+                textJoueur1.setText(names.first);
+                textJoueur2.setText(names.second);
+                Log.e("MyTag", "les noms sont affiches");
+            } else {
+                // Gérer le cas où les noms ne sont pas encore définis
+                Log.e("MyTag", "Les noms des joueurs ne sont pas définis.");
+            }
+        });*/
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,9 +156,8 @@ public class MoprionFragment extends Fragment {
         buttonRejouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Chloe", "--- Clic ---");
 
-                // Naviguer vers fragment morpion
+                // Naviguer vers nouveau fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 MoprionFragment morpionFragment = MoprionFragment.newInstance();

@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -82,19 +83,19 @@ public class WelcomeFragment extends Fragment {
             }
         });
 
+        ViewModelName nameViewModel = new ViewModelProvider(requireActivity()).get(ViewModelName.class);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Chloe", "--- Clic ---");
 
-                //enregistrer les noms
-                Bundle bundle = new Bundle();
-                bundle.putString("nom1", textJoueur1.getText().toString());
-                bundle.putString("nom2", textJoueur2.getText().toString());
+                //enregistrer les noms dans viewModel
+                String player1Name = textJoueur1.getText().toString();
+                String player2Name = textJoueur2.getText().toString();
+                nameViewModel.setPlayerName(player1Name);
 
+                //initialiser le fragment morpion
                 Fragment destinationFragment = new MoprionFragment();
-                destinationFragment.setArguments(bundle);
-
 
                 // Naviguer vers fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
