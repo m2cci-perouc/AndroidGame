@@ -37,32 +37,36 @@ public class WelcomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_welcome, container, false);
     }
 
+    // Fonction pour vérifier et activer le bouton
+    private void verifierEtActiverBouton(EditText textJoueur1, EditText textJoueur2, Button button) {
+        String valeurJoueur1 = textJoueur1.getText().toString().trim();
+        String valeurJoueur2 = textJoueur2.getText().toString().trim();
+        button.setEnabled(!valeurJoueur1.isEmpty() && !valeurJoueur2.isEmpty());
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Trouver les vues
         Button button = view.findViewById(R.id.buttonJoueur);
         EditText textJoueur1 = view.findViewById(R.id.nameJoueur1);
         EditText textJoueur2 = view.findViewById(R.id.nameJoueur2);
 
-        //boutton non cliquable
-        button.setEnabled(false);
+        // Appeler la méthode pour desactiver le bouton
+        verifierEtActiverBouton(textJoueur1, textJoueur2, button);
 
-        //verifier si la saisie utilisateur1 n est pas vide -> autoriser le clic + creer joueur1
+        //verifier si la saisie utilisateur n est pas vide -> autoriser le clic
         textJoueur1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean isEmpty = s.toString().isEmpty();
-                //autoriser clic
-                button.setEnabled(!isEmpty);
+                verifierEtActiverBouton(textJoueur1, textJoueur2, button);
             }
         });
         //verifier si la saisie utilisateur n est pas vide -> autoriser le clic
@@ -77,12 +81,11 @@ public class WelcomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                boolean isEmpty = s.toString().isEmpty();
-                //autoriser clic
-                button.setEnabled(!isEmpty);
+                verifierEtActiverBouton(textJoueur1, textJoueur2, button);
             }
         });
 
+        //initialise le viwModel
         ViewModelName nameViewModel = new ViewModelProvider(requireActivity()).get(ViewModelName.class);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +99,6 @@ public class WelcomeFragment extends Fragment {
 
                 //initialiser le fragment morpion
                 Fragment destinationFragment = new MoprionFragment();
-
                 // Naviguer vers fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
