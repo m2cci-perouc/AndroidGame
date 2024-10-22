@@ -1,7 +1,5 @@
 package com.chloehouse.mopriongame;
 
-import static android.content.Intent.getIntent;
-
 import android.os.Bundle;
 
 import androidx.annotation.DrawableRes;
@@ -17,12 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.net.URISyntaxException;
-import java.util.HashMap;
+import java.util.Random;
 
 
 public class MoprionFragment extends Fragment {
@@ -71,26 +67,16 @@ public class MoprionFragment extends Fragment {
         TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
 
-        ViewModelName nameViewModel = new ViewModelProvider(requireActivity()).get(ViewModelName.class);
+        MyViewModel nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
 
         nameViewModel.getPlayerName().observe(getViewLifecycleOwner(), names -> {
             textJoueur1.setText(names.first);
             textJoueur2.setText(names.second);
         });
-        /*ViewModelName nameViewModel = new ViewModelProvider(this).get(ViewModelName.class);
-        Log.i("MyTag", "afficher les noms avec modelview");
-        nameViewModel.getPlayerNames().observe(getViewLifecycleOwner(), names -> {
-            Log.i("MyTag", "entre dans getPlayerNames");
-            if (names != null) {
-                textJoueur1.setText(names.first);
-                textJoueur2.setText(names.second);
-                Log.e("MyTag", "les noms sont affiches");
-            } else {
-                // Gérer le cas où les noms ne sont pas encore définis
-                Log.e("MyTag", "Les noms des joueurs ne sont pas définis.");
-            }
-        });*/
+
+        // choisi au hasard le premier joueur
+        firstPlayer(textJoueur1, textJoueur2);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,5 +157,18 @@ public class MoprionFragment extends Fragment {
 
     private void updateImage(ImageButton button, @DrawableRes int fichier){
         button.setImageResource(fichier);
+    }
+
+    private void firstPlayer(TextView textJoueur1, TextView textJoueur2){
+        boolean player1Start;
+
+        Random random = new Random();
+        player1Start = random.nextBoolean();
+
+        if (player1Start){
+            textJoueur2.setAlpha(0.2f);
+        }else {
+            textJoueur1.setAlpha(0.2f);
+        }
     }
 }
