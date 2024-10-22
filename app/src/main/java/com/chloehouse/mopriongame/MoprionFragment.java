@@ -76,68 +76,78 @@ public class MoprionFragment extends Fragment {
         });
 
         // choisi au hasard le premier joueur
-        firstPlayer(textJoueur1, textJoueur2);
+        // player1Turn si c'est au joueur 1 de jouer
+        final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2)};
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button1, R.drawable.round_40px);
+                updateImage(button1, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button2, R.drawable.round_40px);
+                updateImage(button2, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button3, R.drawable.round_40px);
+                updateImage(button3, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button4, R.drawable.round_40px);
+                updateImage(button4, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button5, R.drawable.round_40px);
+                updateImage(button5, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button6, R.drawable.round_40px);
+                updateImage(button6, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button7, R.drawable.round_40px);
+                updateImage(button7, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button8, R.drawable.round_40px);
+                updateImage(button8, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button9, R.drawable.round_40px);
+                updateImage(button9, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
+                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
             }
         });
 
@@ -155,11 +165,18 @@ public class MoprionFragment extends Fragment {
         });
     }
 
-    private void updateImage(ImageButton button, @DrawableRes int fichier){
-        button.setImageResource(fichier);
+    private void updateImage(ImageButton button, @DrawableRes int imageCroix,
+                             @DrawableRes int imageRond, Boolean player1Turn){
+
+        if (player1Turn){
+            button.setImageResource(imageRond);
+        }else {
+            button.setImageResource(imageCroix);
+        }
     }
 
-    private void firstPlayer(TextView textJoueur1, TextView textJoueur2){
+    private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2){
+        //player1Start si player1 tiré au sort pour commencer
         boolean player1Start;
 
         Random random = new Random();
@@ -170,5 +187,19 @@ public class MoprionFragment extends Fragment {
         }else {
             textJoueur1.setAlpha(0.2f);
         }
+        return player1Start;
+    }
+
+    private Boolean changerTour(TextView textJoueur1, TextView textJoueur2, Boolean player1Turn){
+        player1Turn = !player1Turn;
+        if (player1Turn){
+            textJoueur1.setAlpha(1f);
+            textJoueur2.setAlpha(0.2f);
+
+        }else {
+            textJoueur1.setAlpha(0.2f);
+            textJoueur2.setAlpha(1f);
+        }
+        return player1Turn;
     }
 }
