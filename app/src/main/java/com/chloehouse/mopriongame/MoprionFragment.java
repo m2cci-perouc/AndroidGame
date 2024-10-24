@@ -1,10 +1,16 @@
 package com.chloehouse.mopriongame;
 
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -32,7 +38,6 @@ public class MoprionFragment extends Fragment {
     private ImageButton button7;
     private ImageButton button8;
     private ImageButton button9;
-    private Button buttonRejouer;
 
     public static MoprionFragment newInstance() {
         MoprionFragment fragment = new MoprionFragment();
@@ -63,7 +68,7 @@ public class MoprionFragment extends Fragment {
         button7 = view.findViewById(R.id.button_7);
         button8 = view.findViewById(R.id.button_8);
         button9 = view.findViewById(R.id.button_9);
-        buttonRejouer = view.findViewById(R.id.buttonRejouer);
+        Button buttonRejouer = view.findViewById(R.id.buttonRejouer);
         TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
 
@@ -165,14 +170,30 @@ public class MoprionFragment extends Fragment {
         });
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void updateImage(ImageButton button, @DrawableRes int imageCroix,
                              @DrawableRes int imageRond, Boolean player1Turn){
-
-        if (player1Turn){
-            button.setImageResource(imageRond);
-        }else {
-            button.setImageResource(imageCroix);
+        if (boutonVide(button)){
+            if (player1Turn) {
+                button.setImageResource(imageRond);
+            } else {
+                button.setImageResource(imageCroix);
+            }
         }
+    }
+
+    private boolean boutonVide(ImageButton button){
+        //true si le bouton est vide
+        Drawable buttonDrawable = button.getDrawable();
+        Drawable encadreDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.encadre, null);
+
+        if (buttonDrawable instanceof BitmapDrawable && encadreDrawable instanceof BitmapDrawable) {
+            Bitmap bitmap1 = ((BitmapDrawable) buttonDrawable).getBitmap();
+            Bitmap bitmap2 = ((BitmapDrawable) encadreDrawable).getBitmap();
+
+            return bitmap1.sameAs(bitmap2);
+        }
+        return false;
     }
 
     private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2){
