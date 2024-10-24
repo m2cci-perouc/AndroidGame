@@ -87,72 +87,72 @@ public class MoprionFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button1, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button1, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button2, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button2, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button3, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button3, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button4, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button4, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button5, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button5, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button6, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button6, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button7, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button7, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button8, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button8, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateImage(button9, R.drawable.round_40px, R.drawable.cross_20px, player1Turn[0]);
-                player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+                jouerUneCase(button9, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                        textJoueur1,  textJoueur2);
             }
         });
 
@@ -168,6 +168,17 @@ public class MoprionFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+    }
+
+    private Boolean jouerUneCase(ImageButton button, @DrawableRes int imageCroix,
+                                 @DrawableRes int imageRond, Boolean[] player1Turn,
+                                 Boolean player1TurnBool,
+                                 TextView textJoueur1, TextView textJoueur2){
+        if (boutonVide(button)){
+            updateImage(button, imageCroix, imageRond, player1TurnBool);
+            player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+        }
+        return player1Turn[0];
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
