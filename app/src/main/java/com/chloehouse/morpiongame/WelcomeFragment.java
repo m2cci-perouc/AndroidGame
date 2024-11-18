@@ -1,4 +1,4 @@
-package com.chloehouse.mopriongame;
+package com.chloehouse.morpiongame;
 
 import android.os.Bundle;
 
@@ -96,7 +96,7 @@ public class WelcomeFragment extends Fragment {
                 nameViewModel.setPlayerName(player1Name, player2Name);
 
                 //initialiser le fragment morpion
-                Fragment destinationFragment = new MoprionFragment();
+                Fragment destinationFragment = new MorpionFragment();
                 // Naviguer vers fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

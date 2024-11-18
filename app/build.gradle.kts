@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    namespace = "com.chloehouse.mopriongame"
+    namespace = "com.chloehouse.morpiongame"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.chloehouse.mopriongame"
+        applicationId = "com.chloehouse.morpiongame"
         minSdk = 24
         targetSdk = 34
         versionCode = 2
-        versionName = "2.0"
+        versionName = "3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

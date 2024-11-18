@@ -1,4 +1,4 @@
-package com.chloehouse.mopriongame;
+package com.chloehouse.morpiongame;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

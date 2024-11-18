@@ -1,6 +1,8 @@
-package com.chloehouse.mopriongame;
+package com.chloehouse.morpiongame;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -9,7 +11,6 @@ import android.os.Bundle;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,7 +28,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-public class MoprionFragment extends Fragment {
+public class MorpionFragment extends Fragment {
 
     private ImageButton button1;
     private ImageButton button2;
@@ -38,9 +39,18 @@ public class MoprionFragment extends Fragment {
     private ImageButton button7;
     private ImageButton button8;
     private ImageButton button9;
+    ButtonCaracteristique butCaract1 = new ButtonCaracteristique(button1, null);
+    ButtonCaracteristique butCaract2 = new ButtonCaracteristique(button2, null);
+    ButtonCaracteristique butCaract3 = new ButtonCaracteristique(button3, null);
+    ButtonCaracteristique butCaract4 = new ButtonCaracteristique(button4, null);
+    ButtonCaracteristique butCaract5 = new ButtonCaracteristique(button5, null);
+    ButtonCaracteristique butCaract6 = new ButtonCaracteristique(button6, null);
+    ButtonCaracteristique butCaract7 = new ButtonCaracteristique(button7, null);
+    ButtonCaracteristique butCaract8 = new ButtonCaracteristique(button8, null);
+    ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null);
 
-    public static MoprionFragment newInstance() {
-        MoprionFragment fragment = new MoprionFragment();
+    public static MorpionFragment newInstance() {
+        MorpionFragment fragment = new MorpionFragment();
         return fragment;
     }
 
@@ -87,7 +97,9 @@ public class MoprionFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button1, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button1, butCaract1,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -95,7 +107,9 @@ public class MoprionFragment extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button2, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button2, butCaract2,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -103,7 +117,9 @@ public class MoprionFragment extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button3, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button3, butCaract3,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -111,7 +127,9 @@ public class MoprionFragment extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button4, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button4, butCaract4,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -119,7 +137,9 @@ public class MoprionFragment extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button5, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button5, butCaract5,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -127,7 +147,9 @@ public class MoprionFragment extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button6, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button6,butCaract6,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -135,7 +157,9 @@ public class MoprionFragment extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button7, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button7, butCaract7,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -143,7 +167,9 @@ public class MoprionFragment extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button8, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button8, butCaract8,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -151,7 +177,9 @@ public class MoprionFragment extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button9, R.drawable.cross_20px, R.drawable.round_40px, player1Turn, player1Turn[0],
+                jouerUneCase(button9, butCaract9,buttonRejouer,
+                        R.drawable.cross_20px, R.drawable.round_40px,
+                        player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2);
             }
         });
@@ -163,27 +191,50 @@ public class MoprionFragment extends Fragment {
                 // Naviguer vers nouveau fragment morpion
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                MoprionFragment morpionFragment = MoprionFragment.newInstance();
+                MorpionFragment morpionFragment = MorpionFragment.newInstance();
                 fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
                 fragmentTransaction.commit();
             }
         });
     }
 
-    private Boolean jouerUneCase(ImageButton button, @DrawableRes int imageCroix,
-                                 @DrawableRes int imageRond, Boolean[] player1Turn,
-                                 Boolean player1TurnBool,
-                                 TextView textJoueur1, TextView textJoueur2){
+    private void jouerUneCase(ImageButton button, ButtonCaracteristique butCaract,
+                              Button buttonRejouer,
+                              @DrawableRes int imageCroix,
+                              @DrawableRes int imageRond,
+                              Boolean[] player1Turn,
+                              Boolean player1TurnBool,
+                              TextView textJoueur1, TextView textJoueur2){
         if (boutonVide(button)){
+            ButtonCaracteristique[] mesBoutons = {butCaract1, butCaract2, butCaract3, butCaract4,
+                    butCaract5, butCaract6, butCaract7, butCaract8,butCaract9 };
+            String message = null;
+
             updateImage(button, imageCroix, imageRond, player1TurnBool);
+            ajouterJoueurSurCase(butCaract, player1TurnBool, textJoueur1, textJoueur2);
+            message = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
+            if (message != null){
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+                builder.setTitle("Partie terminée");
+                builder.setMessage(message);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        buttonRejouer.performClick();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
             player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
         }
-        return player1Turn[0];
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    private void updateImage(ImageButton button, @DrawableRes int imageCroix,
-                             @DrawableRes int imageRond, Boolean player1Turn){
+    private void updateImage(ImageButton button,
+                             @DrawableRes int imageCroix,
+                             @DrawableRes int imageRond,
+                             Boolean player1Turn){
         if (boutonVide(button)){
             if (player1Turn) {
                 button.setImageResource(imageRond);
@@ -207,13 +258,57 @@ public class MoprionFragment extends Fragment {
         return false;
     }
 
+    private void ajouterJoueurSurCase(ButtonCaracteristique butCaract, Boolean player1TurnBool,
+                                      TextView textJoueur1, TextView textJoueur2){
+        if (player1TurnBool){
+            butCaract.setTextView(textJoueur1);
+        }else {butCaract.setTextView(textJoueur2);
+        }
+    }
+
+    private String verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
+                                     TextView textJoueur1, TextView textJoueur2) {
+        String message = null;
+        boolean toutesLesCasesJouees = true;
+        for (ButtonCaracteristique bouton : boutons) {
+            if (bouton.getTextView() == null) {
+                toutesLesCasesJouees = false;
+            }
+        }
+        if (toutesLesCasesJouees) {
+            message = "Toutes les cases sont jouées";
+        } else {
+            message = testAlignement(boutons, player1TurnBool, textJoueur1, textJoueur2);
+            //personalise le message avec nom du joueur
+            if (message != null){
+                if (player1TurnBool){
+                    message = message + textJoueur1.getText();
+                }else{
+                message = message + textJoueur2.getText();
+                }
+            }
+        }
+        return message;
+    }
+
+    private String testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
+                                  TextView textJoueur1, TextView textJoueur2){
+        String message = null;
+        String nomJoueurActuel = player1TurnBool ?
+                textJoueur1.getText().toString() : textJoueur2.getText().toString();
+
+
+        return message;
+    }
+
     private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2){
-        //player1Start si player1 tiré au sort pour commencer
+        //player1Start true si player1 tiré au sort pour commencer
         boolean player1Start;
 
         Random random = new Random();
         player1Start = random.nextBoolean();
 
+        // met de la transparence sur les noms
         if (player1Start){
             textJoueur2.setAlpha(0.2f);
         }else {
