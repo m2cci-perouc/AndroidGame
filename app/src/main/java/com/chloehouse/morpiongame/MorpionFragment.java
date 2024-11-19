@@ -25,6 +25,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Random;
 
 
@@ -39,19 +41,18 @@ public class MorpionFragment extends Fragment {
     private ImageButton button7;
     private ImageButton button8;
     private ImageButton button9;
-    ButtonCaracteristique butCaract1 = new ButtonCaracteristique(button1, null);
-    ButtonCaracteristique butCaract2 = new ButtonCaracteristique(button2, null);
-    ButtonCaracteristique butCaract3 = new ButtonCaracteristique(button3, null);
-    ButtonCaracteristique butCaract4 = new ButtonCaracteristique(button4, null);
-    ButtonCaracteristique butCaract5 = new ButtonCaracteristique(button5, null);
-    ButtonCaracteristique butCaract6 = new ButtonCaracteristique(button6, null);
-    ButtonCaracteristique butCaract7 = new ButtonCaracteristique(button7, null);
-    ButtonCaracteristique butCaract8 = new ButtonCaracteristique(button8, null);
-    ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null);
+    ButtonCaracteristique butCaract1 = new ButtonCaracteristique(button1, null, null);
+    ButtonCaracteristique butCaract2 = new ButtonCaracteristique(button2, null, null);
+    ButtonCaracteristique butCaract3 = new ButtonCaracteristique(button3, null, null);
+    ButtonCaracteristique butCaract4 = new ButtonCaracteristique(button4, null, null);
+    ButtonCaracteristique butCaract5 = new ButtonCaracteristique(button5, null, null);
+    ButtonCaracteristique butCaract6 = new ButtonCaracteristique(button6, null, null);
+    ButtonCaracteristique butCaract7 = new ButtonCaracteristique(button7, null, null);
+    ButtonCaracteristique butCaract8 = new ButtonCaracteristique(button8, null, null);
+    ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null, null);
 
     public static MorpionFragment newInstance() {
-        MorpionFragment fragment = new MorpionFragment();
-        return fragment;
+        return new MorpionFragment();
     }
 
     @Override
@@ -208,10 +209,9 @@ public class MorpionFragment extends Fragment {
         if (boutonVide(button)){
             ButtonCaracteristique[] mesBoutons = {butCaract1, butCaract2, butCaract3, butCaract4,
                     butCaract5, butCaract6, butCaract7, butCaract8,butCaract9 };
-            String message = null;
+            String message;
 
-            updateImage(button, imageCroix, imageRond, player1TurnBool);
-            ajouterJoueurSurCase(butCaract, player1TurnBool, textJoueur1, textJoueur2);
+            updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
             message = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
             if (message != null){
                 AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
@@ -232,14 +232,20 @@ public class MorpionFragment extends Fragment {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void updateImage(ImageButton button,
+                             ButtonCaracteristique butCaract,
                              @DrawableRes int imageCroix,
                              @DrawableRes int imageRond,
-                             Boolean player1Turn){
+                             Boolean player1Turn,
+                             TextView textJoueur1, TextView textJoueur2){
         if (boutonVide(button)){
             if (player1Turn) {
                 button.setImageResource(imageRond);
+                butCaract.setTextView(textJoueur1);
+                butCaract.setNumJoueur(1);
             } else {
                 button.setImageResource(imageCroix);
+                butCaract.setTextView(textJoueur2);
+                butCaract.setNumJoueur(2);
             }
         }
     }
@@ -258,47 +264,79 @@ public class MorpionFragment extends Fragment {
         return false;
     }
 
-    private void ajouterJoueurSurCase(ButtonCaracteristique butCaract, Boolean player1TurnBool,
-                                      TextView textJoueur1, TextView textJoueur2){
-        if (player1TurnBool){
-            butCaract.setTextView(textJoueur1);
-        }else {butCaract.setTextView(textJoueur2);
-        }
-    }
-
     private String verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
                                      TextView textJoueur1, TextView textJoueur2) {
+        // fonction verifie si toutes les cases sont jouees ou si un joueur a aligne ses cases
+
         String message = null;
+        Boolean gagne;
         boolean toutesLesCasesJouees = true;
         for (ButtonCaracteristique bouton : boutons) {
-            if (bouton.getTextView() == null) {
+            if (bouton.getNumJoueur() == null) {
                 toutesLesCasesJouees = false;
             }
         }
         if (toutesLesCasesJouees) {
-            message = "Toutes les cases sont jouées";
+            message = "Match nul... \nRejouez pour gagner !" ;
         } else {
-            message = testAlignement(boutons, player1TurnBool, textJoueur1, textJoueur2);
+            gagne = testAlignement(boutons, player1TurnBool);
             //personalise le message avec nom du joueur
-            if (message != null){
+            if (gagne){
                 if (player1TurnBool){
-                    message = message + textJoueur1.getText();
+                    message = (String) textJoueur1.getText() + " a gagné !";
                 }else{
-                message = message + textJoueur2.getText();
+                message = (String) textJoueur2.getText() + " a gagné !";
                 }
             }
         }
         return message;
     }
 
-    private String testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
-                                  TextView textJoueur1, TextView textJoueur2){
-        String message = null;
-        String nomJoueurActuel = player1TurnBool ?
-                textJoueur1.getText().toString() : textJoueur2.getText().toString();
+    private Boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
+        // fonction test si joueur a aligne ses cases
+        boolean gagner = false;
+        Integer joueurActuel = player1TurnBool ? 1 : 2;
 
+        // test Ligne
+        for (int ligne = 0; ligne < 3; ligne++) {
+            if (boutons[ligne * 3] != null &&
+                    boutons[ligne * 3 + 1] != null &&
+                    boutons[ligne * 3 + 2] != null &&
+                    boutons[ligne * 3].getNumJoueur() == (joueurActuel) &&
+                    boutons[ligne * 3 + 1].getNumJoueur() == (joueurActuel) &&
+                    boutons[ligne * 3 + 2].getNumJoueur() == (joueurActuel)) {
+                gagner = true;
+                break;
+            }
+        }
 
-        return message;
+        //test Colonne
+        for (int colonne = 0; colonne < 3; colonne++) {
+            if (boutons[colonne] != null &&
+                    boutons[colonne + 3] != null &&
+                    boutons[colonne + 6] != null &&
+                    boutons[colonne].getNumJoueur() == (joueurActuel) &&
+                    boutons[colonne + 3].getNumJoueur() == (joueurActuel) &&
+                    boutons[colonne + 6].getNumJoueur() == (joueurActuel)) {
+                gagner = true;
+                break;
+            }
+        }
+
+        //test digonale
+        if (boutons[0] != null && boutons[4] != null && boutons[8] != null &&
+                boutons[0].getNumJoueur() == (joueurActuel) &&
+                boutons[4].getNumJoueur() == (joueurActuel) &&
+                boutons[8].getNumJoueur() == (joueurActuel)) {
+            gagner = true;
+        }
+        if (boutons[2] != null && boutons[4] != null && boutons[6] != null &&
+                boutons[2].getNumJoueur() == (joueurActuel) &&
+                boutons[4].getNumJoueur() == (joueurActuel) &&
+                boutons[6].getNumJoueur() == (joueurActuel)){
+            gagner = true;
+        }
+        return gagner;
     }
 
     private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2){

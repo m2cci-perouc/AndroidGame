@@ -8,14 +8,16 @@ public class ButtonCaracteristique {
 
         private ImageButton imageButton;
         private TextView textView;
+        private Integer numJoueur;
 
         // Constructeur
-        public ButtonCaracteristique(ImageButton imageButton, TextView textView) {
-            this.imageButton = imageButton;
-            this.textView = textView;
-        }
+    public ButtonCaracteristique(ImageButton imageButton, TextView textView, Integer numJoueur) {
+        this.imageButton = imageButton;
+        this.textView = textView;
+        this.numJoueur = numJoueur;
+    }
 
-        // Getters
+    // Getters
         public ImageButton getImageButton() {
             return imageButton;
         }
@@ -24,12 +26,20 @@ public class ButtonCaracteristique {
             return textView;
         }
 
-        // Setters
+        public Integer getNumJoueur() {
+            return numJoueur;
+        }
+
+    // Setters
         public void setImageButton(ImageButton imageButton) {
             this.imageButton = imageButton;
         }
 
         public void setTextView(TextView textView) {
             this.textView = textView;
+        }
+
+        public void setNumJoueur(Integer numJoueur) {
+            this.numJoueur = numJoueur;
         }
 }
