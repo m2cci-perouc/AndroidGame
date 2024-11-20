@@ -1,4 +1,4 @@
-package com.chloehouse.morpiongame;
+package com.chloehouse.mopriongame;
 
 import android.util.Log;
 import android.util.Pair;

@@ -1,4 +1,4 @@
-package com.chloehouse.morpiongame;
+package com.chloehouse.mopriongame;
 
 import android.os.Bundle;
 
@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.chloehouse.mopriongame.R;
 
 public class WelcomeFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.chloehouse.morpiongame;
+package com.chloehouse.mopriongame;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.chloehouse.mopriongame.R;
 
 import java.util.Random;
 

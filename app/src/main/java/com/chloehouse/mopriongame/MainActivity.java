@@ -1,7 +1,9 @@
-package com.chloehouse.morpiongame;
+package com.chloehouse.mopriongame;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.chloehouse.mopriongame.R;
 
 public class MainActivity extends AppCompatActivity {
 
