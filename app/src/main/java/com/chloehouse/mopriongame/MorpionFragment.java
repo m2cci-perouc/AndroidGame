@@ -15,6 +15,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
@@ -32,6 +33,7 @@ import java.util.Random;
 
 public class MorpionFragment extends Fragment {
 
+    private MyViewModel nameViewModel;
     private ImageButton button1;
     private ImageButton button2;
     private ImageButton button3;
@@ -85,7 +87,7 @@ public class MorpionFragment extends Fragment {
         TextView scoreJoueur1 = view.findViewById(R.id.textViewScoreJoueur1);
         TextView scoreJoueur2 = view.findViewById(R.id.textViewScoreJoueur2);
 
-        MyViewModel nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
+        nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
 
         // affiche les noms des joueurs
@@ -303,8 +305,10 @@ public class MorpionFragment extends Fragment {
             if (gagne){
                 if (player1TurnBool){
                     message = (String) textJoueur1.getText() + " a gagné !";
+                    nameViewModel.incrementPlayer1Score();
                 }else{
-                message = (String) textJoueur2.getText() + " a gagné !";
+                    message = (String) textJoueur2.getText() + " a gagné !";
+                    nameViewModel.incrementPlayer2Score();
                 }
             }
         }

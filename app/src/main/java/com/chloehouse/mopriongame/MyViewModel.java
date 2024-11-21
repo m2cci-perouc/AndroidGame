@@ -18,11 +18,11 @@ public class MyViewModel extends ViewModel {
     //noms
     public void setPlayerName(String player1, String player2) {
         playerNames.setValue(new Pair<>(player1, player2));
-        Log.i("ViewModelName", "player set !");
+        Log.i("ViewModelName", "player name set !");
     }
 
     public LiveData<Pair<String, String>> getPlayerName() {
-        Log.i("ViewModelName", "player get !");
+        Log.i("ViewModelName", "player name get !");
         return playerNames;
     }
 
