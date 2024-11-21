@@ -7,7 +7,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,85 +23,119 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp">
 
-            <TextView
-                android:id="@+id/textViewNomJoueur1"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/fanny"
-                android:layout_marginHorizontal="20dp"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur1"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.6"
-                />
-            <TextView
-                android:id="@+id/textViewScoreJoueur1"
+                android:contentDescription="@string/round"
+                android:src="@drawable/round_50px"
+                android:layout_marginVertical="15dp">
+            </ImageView>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0"
-                android:layout_marginHorizontal="40dp"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur1"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.6"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewNomJoueur1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/fanny"
+                    android:layout_marginHorizontal="0dp"
+                    android:padding="15dp"
+                    android:paddingEnd="0dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:background="@color/couleur_joueur1"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:alpha="0.7"
                 />
+                <TextView
+                    android:id="@+id/textViewScoreJoueur1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="0dp"
+                    android:alpha="0.7"
+                    android:background="@color/couleur_joueur1"
+                    android:fontFamily="sans-serif-light"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="0" />
+                </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cross"
+                android:src="@drawable/cross_50px"
+                android:layout_marginVertical="15dp">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
             <TextView
                 android:id="@+id/textViewNomJoueur2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/lucie"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="0dp"
                 android:padding="15dp"
+                android:paddingEnd="0dp"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:background="@color/couleur_joueur2"
                 android:fontFamily="sans-serif-light"
                 android:textStyle="bold"
-                android:alpha="0.6" />
-            <TextView
-                android:id="@+id/textViewScoreJoueur2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="0"
-                android:layout_marginHorizontal="40dp"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur2"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.6"/>
+                android:alpha="0.7" />
+                <TextView
+                    android:id="@+id/textViewScoreJoueur2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="0"
+                    android:layout_marginHorizontal="0dp"
+                    android:padding="15dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:background="@color/couleur_joueur2"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:alpha="0.7"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="0dp"
+        android:layout_margin="30dp"
         >
         <!-- Ligne 1 -->
         <ImageButton
@@ -112,6 +145,7 @@
             android:contentDescription="@string/cross"
             android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_2"
@@ -121,6 +155,7 @@
             android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
             android:layout_toEndOf="@+id/button_1"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_3"
@@ -130,6 +165,7 @@
             android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
             android:layout_toEndOf="@+id/button_2"
+            android:padding="0dp"
             />
 
         <!-- Ligne 2 -->
@@ -141,6 +177,7 @@
             android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
             android:layout_below="@+id/button_1"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_5"
@@ -151,6 +188,7 @@
             android:backgroundTint="@color/white"
             android:layout_toEndOf ="@+id/button_4"
             android:layout_below="@id/button_2"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_6"
@@ -161,6 +199,7 @@
             android:backgroundTint="@color/white"
             android:layout_toEndOf="@+id/button_5"
             android:layout_below="@id/button_3"
+            android:padding="0dp"
             />
         <!-- Ligne 3 -->
         <ImageButton
@@ -171,6 +210,7 @@
             android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
             android:layout_below="@+id/button_4"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_8"
@@ -181,6 +221,7 @@
             android:backgroundTint="@color/white"
             android:layout_toEndOf="@id/button_7"
             android:layout_below="@+id/button_5"
+            android:padding="0dp"
             />
         <ImageButton
             android:id="@+id/button_9"
@@ -191,6 +232,7 @@
             android:backgroundTint="@color/white"
             android:layout_toEndOf="@id/button_8"
             android:layout_below="@+id/button_6"
+            android:padding="0dp"
             />
     </RelativeLayout>
 
@@ -198,12 +240,14 @@
         android:id="@+id/buttonRejouer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="50dp"
         android:paddingHorizontal="24dp"
         android:textSize="20sp"
         android:backgroundTint="@color/black"
         android:text="@string/rejouer"
         android:fontFamily="sans-serif-light"/>
+
+
 
 </LinearLayout>

@@ -15,7 +15,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
@@ -26,10 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.chloehouse.mopriongame.R;
-
 import java.util.Random;
-
 
 public class MorpionFragment extends Fragment {
 
@@ -110,7 +106,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button1, butCaract1,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -121,7 +117,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button2, butCaract2,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -132,7 +128,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button3, butCaract3,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -143,7 +139,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button4, butCaract4,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -154,7 +150,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button5, butCaract5,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -165,7 +161,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button6,butCaract6,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -176,7 +172,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button7, butCaract7,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -187,7 +183,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button8, butCaract8,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -198,7 +194,7 @@ public class MorpionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 jouerUneCase(button9, butCaract9,buttonRejouer,
-                        R.drawable.cross_20px, R.drawable.round_40px,
+                        R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
                         scoreJoueur1, scoreJoueur2);
@@ -386,15 +382,15 @@ public class MorpionFragment extends Fragment {
                                 Boolean player1Turn){
         player1Turn = !player1Turn;
         if (player1Turn){
-            textJoueur1.setAlpha(0.6f);
-            scoreJoueur1.setAlpha(0.6f);
+            textJoueur1.setAlpha(0.7f);
+            scoreJoueur1.setAlpha(0.7f);
             textJoueur2.setAlpha(0.2f);
             scoreJoeur2.setAlpha(0.2f);
         }else {
             textJoueur1.setAlpha(0.2f);
             scoreJoueur1.setAlpha(0.2f);
-            textJoueur2.setAlpha(0.6f);
-            scoreJoeur2.setAlpha(0.6f);
+            textJoueur2.setAlpha(0.7f);
+            scoreJoeur2.setAlpha(0.7f);
         }
         return player1Turn;
     }
