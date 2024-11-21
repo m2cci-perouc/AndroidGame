@@ -88,14 +88,21 @@ public class MorpionFragment extends Fragment {
         MyViewModel nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
 
+        // affiche les noms des joueurs
         nameViewModel.getPlayerName().observe(getViewLifecycleOwner(), names -> {
             textJoueur1.setText(names.first);
             textJoueur2.setText(names.second);
+        });
+        // affiche les scores des joueurs
+        nameViewModel.getPlayerScore().observe(getViewLifecycleOwner(), scores -> {
+            scoreJoueur1.setText(String.valueOf(scores.first));
+            scoreJoueur2.setText(String.valueOf(scores.second));
         });
 
         // choisi au hasard le premier joueur
         // player1Turn si c'est au joueur 1 de jouer
         final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2, scoreJoueur1, scoreJoueur2)};
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

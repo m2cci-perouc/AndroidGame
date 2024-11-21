@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +97,7 @@ public class WelcomeFragment extends Fragment {
                 String player1Name = textJoueur1.getText().toString();
                 String player2Name = textJoueur2.getText().toString();
                 nameViewModel.setPlayerName(player1Name, player2Name);
+                nameViewModel.setPlayerScore();
 
                 //initialiser le fragment morpion
                 Fragment destinationFragment = new MorpionFragment();
