@@ -287,25 +287,28 @@ public class MorpionFragment extends Fragment {
 
         String message = null;
         Boolean gagne;
-        boolean toutesLesCasesJouees = true;
-        for (ButtonCaracteristique bouton : boutons) {
-            if (bouton.getNumJoueur() == null) {
-                toutesLesCasesJouees = false;
+        Boolean plateauPlein = true;
+
+        //test si gagné
+        gagne = testAlignement(boutons, player1TurnBool);
+        //personalise le message avec nom du joueur
+        if (gagne){
+            if (player1TurnBool){
+                message = (String) textJoueur1.getText() + " a gagné !";
+                nameViewModel.incrementPlayer1Score();
+            }else{
+                message = (String) textJoueur2.getText() + " a gagné !";
+                nameViewModel.incrementPlayer2Score();
             }
-        }
-        if (toutesLesCasesJouees) {
-            message = "Match nul... \nRejouez pour gagner !" ;
-        } else {
-            gagne = testAlignement(boutons, player1TurnBool);
-            //personalise le message avec nom du joueur
-            if (gagne){
-                if (player1TurnBool){
-                    message = (String) textJoueur1.getText() + " a gagné !";
-                    nameViewModel.incrementPlayer1Score();
-                }else{
-                    message = (String) textJoueur2.getText() + " a gagné !";
-                    nameViewModel.incrementPlayer2Score();
+        }else {
+            //test si plus de case libre
+            for (ButtonCaracteristique bouton : boutons) {
+                if (bouton.getNumJoueur() == null) {
+                    plateauPlein = false;
                 }
+            }
+            if (plateauPlein){
+                message = "Match nul... \nRejouez pour gagner !" ;
             }
         }
         return message;
