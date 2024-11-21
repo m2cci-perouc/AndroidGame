@@ -82,6 +82,8 @@ public class MorpionFragment extends Fragment {
         Button buttonRejouer = view.findViewById(R.id.buttonRejouer);
         TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
+        TextView scoreJoueur1 = view.findViewById(R.id.textViewScoreJoueur1);
+        TextView scoreJoueur2 = view.findViewById(R.id.textViewScoreJoueur2);
 
         MyViewModel nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
@@ -93,7 +95,7 @@ public class MorpionFragment extends Fragment {
 
         // choisi au hasard le premier joueur
         // player1Turn si c'est au joueur 1 de jouer
-        final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2)};
+        final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2, scoreJoueur1, scoreJoueur2)};
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +103,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button1, butCaract1,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -111,7 +114,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button2, butCaract2,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -121,7 +125,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button3, butCaract3,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -131,7 +136,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button4, butCaract4,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -141,7 +147,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button5, butCaract5,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -151,7 +158,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button6,butCaract6,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -161,7 +169,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button7, butCaract7,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -171,7 +180,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button8, butCaract8,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -181,7 +191,8 @@ public class MorpionFragment extends Fragment {
                 jouerUneCase(button9, butCaract9,buttonRejouer,
                         R.drawable.cross_20px, R.drawable.round_40px,
                         player1Turn, player1Turn[0],
-                        textJoueur1,  textJoueur2);
+                        textJoueur1,  textJoueur2,
+                        scoreJoueur1, scoreJoueur2);
             }
         });
 
@@ -205,7 +216,8 @@ public class MorpionFragment extends Fragment {
                               @DrawableRes int imageRond,
                               Boolean[] player1Turn,
                               Boolean player1TurnBool,
-                              TextView textJoueur1, TextView textJoueur2){
+                              TextView textJoueur1, TextView textJoueur2,
+                              TextView scoreJoueur1, TextView scoreJoueur2){
         if (boutonVide(button)){
             ButtonCaracteristique[] mesBoutons = {butCaract1, butCaract2, butCaract3, butCaract4,
                     butCaract5, butCaract6, butCaract7, butCaract8,butCaract9 };
@@ -226,7 +238,7 @@ public class MorpionFragment extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-            player1Turn[0] = changerTour(textJoueur1,  textJoueur2, player1Turn[0]);
+            player1Turn[0] = changerTour(textJoueur1,  textJoueur2, scoreJoueur1, scoreJoueur2,player1Turn[0]);
         }
     }
 
@@ -339,7 +351,8 @@ public class MorpionFragment extends Fragment {
         return gagner;
     }
 
-    private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2){
+    private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2,
+                                TextView scoreJoueur1, TextView scoreJoueur2){
         //player1Start true si player1 tiré au sort pour commencer
         boolean player1Start;
 
@@ -349,21 +362,28 @@ public class MorpionFragment extends Fragment {
         // met de la transparence sur les noms
         if (player1Start){
             textJoueur2.setAlpha(0.2f);
+            scoreJoueur2.setAlpha(0.2f);
         }else {
             textJoueur1.setAlpha(0.2f);
+            scoreJoueur1.setAlpha(0.2f);
         }
         return player1Start;
     }
 
-    private Boolean changerTour(TextView textJoueur1, TextView textJoueur2, Boolean player1Turn){
+    private Boolean changerTour(TextView textJoueur1, TextView textJoueur2,
+                                TextView scoreJoueur1, TextView scoreJoeur2,
+                                Boolean player1Turn){
         player1Turn = !player1Turn;
         if (player1Turn){
-            textJoueur1.setAlpha(1f);
+            textJoueur1.setAlpha(0.6f);
+            scoreJoueur1.setAlpha(0.6f);
             textJoueur2.setAlpha(0.2f);
-
+            scoreJoeur2.setAlpha(0.2f);
         }else {
             textJoueur1.setAlpha(0.2f);
-            textJoueur2.setAlpha(1f);
+            scoreJoueur1.setAlpha(0.2f);
+            textJoueur2.setAlpha(0.6f);
+            scoreJoeur2.setAlpha(0.6f);
         }
         return player1Turn;
     }

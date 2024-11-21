@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -23,70 +24,78 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="50dp">
-        <TextView
-            android:id="@+id/textViewNomJoueur1"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/fanny"
-            android:layout_marginHorizontal="20dp"
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/couleur_joueur1"
-            android:fontFamily="sans-serif-light"
-            android:textStyle="bold"
-            android:alpha="0.6"
-            />
-        <TextView
-            android:id="@+id/textViewNomJoueur2"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewNomJoueur1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/fanny"
+                android:layout_marginHorizontal="20dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/couleur_joueur1"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold"
+                android:alpha="0.6"
+                />
+            <TextView
+                android:id="@+id/textViewScoreJoueur1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0"
+                android:layout_marginHorizontal="40dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/couleur_joueur1"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold"
+                android:alpha="0.6"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/lucie"
-            android:layout_marginHorizontal="20dp"
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/couleur_joueur2"
-            android:fontFamily="sans-serif-light"
-            android:textStyle="bold"
-            android:alpha="0.6"
-            />
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewNomJoueur2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/lucie"
+                android:layout_marginHorizontal="20dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/couleur_joueur2"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold"
+                android:alpha="0.6" />
+            <TextView
+                android:id="@+id/textViewScoreJoueur2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0"
+                android:layout_marginHorizontal="40dp"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/couleur_joueur2"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold"
+                android:alpha="0.6"/>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="50dp">
-        <TextView
-            android:id="@+id/textViewScoreJoueur1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="0"
-            android:layout_marginHorizontal="40dp"
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/couleur_joueur1"
-            android:fontFamily="sans-serif-light"
-            android:textStyle="bold"
-            android:alpha="0.6"
-            />
-        <TextView
-            android:id="@+id/textViewScoreJoueur2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="0"
-            android:layout_marginHorizontal="40dp"
-            android:padding="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/couleur_joueur2"
-            android:fontFamily="sans-serif-light"
-            android:textStyle="bold"
-            android:alpha="0.6"
-            />
-    </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
