@@ -3,9 +3,11 @@ package com.chloehouse.mopriongame;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.DrawableRes;
@@ -82,6 +84,7 @@ public class MorpionFragment extends Fragment {
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
         TextView scoreJoueur1 = view.findViewById(R.id.textViewScoreJoueur1);
         TextView scoreJoueur2 = view.findViewById(R.id.textViewScoreJoueur2);
+        TextView tvPolitique = view.findViewById(R.id.tvPolitiqueConfidentialite);
 
         nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
@@ -211,6 +214,16 @@ public class MorpionFragment extends Fragment {
                 MorpionFragment morpionFragment = MorpionFragment.newInstance();
                 fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
                 fragmentTransaction.commit();
+            }
+        });
+
+        // lien confidentialite cliquable
+        tvPolitique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.privacypolicies.com/live/671e4fb6-889b-4ba4-ad6f-0387e9840aaa"));
+                startActivity(intent);
             }
         });
     }

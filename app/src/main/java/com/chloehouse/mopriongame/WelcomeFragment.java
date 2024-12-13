@@ -1,5 +1,7 @@
 package com.chloehouse.mopriongame;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.chloehouse.mopriongame.R;
 
@@ -53,9 +56,20 @@ public class WelcomeFragment extends Fragment {
         Button button = view.findViewById(R.id.buttonJoueur);
         EditText textJoueur1 = view.findViewById(R.id.nameJoueur1);
         EditText textJoueur2 = view.findViewById(R.id.nameJoueur2);
+        TextView tvPolitique = view.findViewById(R.id.tvPolitiqueConfidentialite);
 
         // Appeler la méthode pour desactiver le bouton
         verifierEtActiverBouton(textJoueur1, textJoueur2, button);
+
+        // lien confidentialite cliquable
+        tvPolitique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.privacypolicies.com/live/671e4fb6-889b-4ba4-ad6f-0387e9840aaa"));
+                startActivity(intent);
+            }
+        });
 
         //verifier si la saisie utilisateur n est pas vide -> autoriser le clic
         textJoueur1.addTextChangedListener(new TextWatcher() {

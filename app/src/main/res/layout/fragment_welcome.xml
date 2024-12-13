@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".WelcomeFragment">
 
     <LinearLayout
@@ -110,6 +111,16 @@
             android:backgroundTint="@color/black"
             android:text="@string/jouer"
             android:fontFamily="sans-serif-light"/>
+
+        <TextView
+            android:id="@+id/tvPolitiqueConfidentialite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/politique_de_confidentialit"
+            android:autoLink="web"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="10dp" />
     </LinearLayout>
 
 </FrameLayout>
