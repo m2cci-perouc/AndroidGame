@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.Random;
 
 public class MorpionFragment extends Fragment {
@@ -50,6 +52,7 @@ public class MorpionFragment extends Fragment {
     ButtonCaracteristique butCaract7 = new ButtonCaracteristique(button7, null, null);
     ButtonCaracteristique butCaract8 = new ButtonCaracteristique(button8, null, null);
     ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null, null);
+    private LottieAnimationView lottieAnimationView;
 
     public static MorpionFragment newInstance() {
         return new MorpionFragment();
@@ -85,6 +88,7 @@ public class MorpionFragment extends Fragment {
         TextView scoreJoueur1 = view.findViewById(R.id.textViewScoreJoueur1);
         TextView scoreJoueur2 = view.findViewById(R.id.textViewScoreJoueur2);
         TextView tvPolitique = view.findViewById(R.id.tvPolitiqueConfidentialite);
+        lottieAnimationView = view.findViewById(R.id.lottie_animation_view);
 
         nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
@@ -307,9 +311,15 @@ public class MorpionFragment extends Fragment {
         //personalise le message avec nom du joueur
         if (gagne){
             if (player1TurnBool){
+                lottieAnimationView.setVisibility(View.VISIBLE);
+                lottieAnimationView.playAnimation();
+
                 message = (String) textJoueur1.getText() + " a gagné !";
                 nameViewModel.incrementPlayer1Score();
             }else{
+                lottieAnimationView.setVisibility(View.VISIBLE);
+                lottieAnimationView.playAnimation();
+
                 message = (String) textJoueur2.getText() + " a gagné !";
                 nameViewModel.incrementPlayer2Score();
             }
