@@ -264,6 +264,19 @@
         android:layout_marginBottom="10dp" />
 
 </LinearLayout>
+    <TextView
+        android:id="@+id/nomGagnant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="200dp"
+        android:textSize="100sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        tools:text="@string/fanny"
+        >
+    </TextView>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_animation_view"
         android:layout_width="match_parent"

@@ -39,6 +39,8 @@ dependencies {
     implementation(libs.constraintlayout)
     //noinspection UseTomlInstead
     implementation ("com.airbnb.android:lottie-compose:6.6.2")
+    //noinspection UseTomlInstead
+    implementation ("com.daimajia.androidanimations:library:2.4@aar")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

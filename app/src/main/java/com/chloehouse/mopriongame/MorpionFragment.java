@@ -28,6 +28,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Random;
 
@@ -53,6 +55,7 @@ public class MorpionFragment extends Fragment {
     ButtonCaracteristique butCaract8 = new ButtonCaracteristique(button8, null, null);
     ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null, null);
     private LottieAnimationView lottieAnimationView;
+    private TextView textViewGagant;
 
     public static MorpionFragment newInstance() {
         return new MorpionFragment();
@@ -89,6 +92,7 @@ public class MorpionFragment extends Fragment {
         TextView scoreJoueur2 = view.findViewById(R.id.textViewScoreJoueur2);
         TextView tvPolitique = view.findViewById(R.id.tvPolitiqueConfidentialite);
         lottieAnimationView = view.findViewById(R.id.lottie_animation_view);
+        textViewGagant= view.findViewById(R.id.nomGagnant);
 
         nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
@@ -313,12 +317,22 @@ public class MorpionFragment extends Fragment {
             if (player1TurnBool){
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
+                textViewGagant.setText(textJoueur1.getText());
+                YoYo.with(Techniques.Tada)
+                        .duration(700)
+                        .repeat(5)
+                        .playOn(textViewGagant);
 
                 message = (String) textJoueur1.getText() + " a gagné !";
                 nameViewModel.incrementPlayer1Score();
             }else{
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
+                textViewGagant.setText(textJoueur2.getText());
+                YoYo.with(Techniques.Tada)
+                        .duration(700)
+                        .repeat(5)
+                        .playOn(textViewGagant);
 
                 message = (String) textJoueur2.getText() + " a gagné !";
                 nameViewModel.incrementPlayer2Score();
