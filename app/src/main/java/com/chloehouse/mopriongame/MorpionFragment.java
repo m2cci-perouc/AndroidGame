@@ -247,14 +247,14 @@ public class MorpionFragment extends Fragment {
         if (boutonVide(button)){
             ButtonCaracteristique[] mesBoutons = {butCaract1, butCaract2, butCaract3, butCaract4,
                     butCaract5, butCaract6, butCaract7, butCaract8,butCaract9 };
-            String message;
+            boolean matchNull;
 
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
-            message = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
-            if (message != null){
+            matchNull = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
+            if (matchNull){
                 AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
                 builder.setTitle("Partie terminée");
-                builder.setMessage(message);
+                builder.setMessage("Match nul... \n Rejouez pour gagner !\n");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -302,11 +302,11 @@ public class MorpionFragment extends Fragment {
         return false;
     }
 
-    private String verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
+    private boolean verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
                                      TextView textJoueur1, TextView textJoueur2) {
         // fonction verifie si toutes les cases sont jouees ou si un joueur a aligne ses cases
 
-        String message = null;
+        boolean matchNull = false;
         Boolean gagne;
         Boolean plateauPlein = true;
 
@@ -323,7 +323,6 @@ public class MorpionFragment extends Fragment {
                         .repeat(5)
                         .playOn(textViewGagant);
 
-                message = (String) textJoueur1.getText() + " a gagné !";
                 nameViewModel.incrementPlayer1Score();
             }else{
                 lottieAnimationView.setVisibility(View.VISIBLE);
@@ -334,7 +333,6 @@ public class MorpionFragment extends Fragment {
                         .repeat(5)
                         .playOn(textViewGagant);
 
-                message = (String) textJoueur2.getText() + " a gagné !";
                 nameViewModel.incrementPlayer2Score();
             }
         }else {
@@ -345,10 +343,10 @@ public class MorpionFragment extends Fragment {
                 }
             }
             if (plateauPlein){
-                message = "Match nul... \nRejouez pour gagner !" ;
+                matchNull = true;
             }
         }
-        return message;
+        return matchNull;
     }
 
     private Boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
