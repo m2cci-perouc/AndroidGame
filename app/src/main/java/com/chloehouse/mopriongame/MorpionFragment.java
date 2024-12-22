@@ -1,5 +1,8 @@
 package com.chloehouse.mopriongame;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,6 +22,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +61,7 @@ public class MorpionFragment extends Fragment {
     ButtonCaracteristique butCaract9 = new ButtonCaracteristique(button9, null, null);
     private LottieAnimationView lottieAnimationView;
     private TextView textViewGagant;
+    private TextView textViewMatchNull;
 
     public static MorpionFragment newInstance() {
         return new MorpionFragment();
@@ -93,6 +99,7 @@ public class MorpionFragment extends Fragment {
         TextView tvPolitique = view.findViewById(R.id.tvPolitiqueConfidentialite);
         lottieAnimationView = view.findViewById(R.id.lottie_animation_view);
         textViewGagant= view.findViewById(R.id.nomGagnant);
+        textViewMatchNull= view.findViewById(R.id.matchNull);
 
         nameViewModel = new ViewModelProvider(requireActivity()).get(MyViewModel.class);
         Log.i("ViewModelName", "nameViewModel is Initielized !");
@@ -236,6 +243,7 @@ public class MorpionFragment extends Fragment {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void jouerUneCase(ImageButton button, ButtonCaracteristique butCaract,
                               Button buttonRejouer,
                               @DrawableRes int imageCroix,
@@ -252,17 +260,10 @@ public class MorpionFragment extends Fragment {
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
             matchNull = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
             if (matchNull){
-                AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-                builder.setTitle("Partie terminée");
-                builder.setMessage("Match nul... \n Rejouez pour gagner !\n");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        buttonRejouer.performClick();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                textViewMatchNull.setText("Match null...");
+                YoYo.with(Techniques.SlideInDown)
+                        .duration(2000)
+                        .playOn(textViewMatchNull);
             }
             player1Turn[0] = changerTour(textJoueur1,  textJoueur2, scoreJoueur1, scoreJoueur2,player1Turn[0]);
         }
@@ -315,23 +316,39 @@ public class MorpionFragment extends Fragment {
         //personalise le message avec nom du joueur
         if (gagne){
             if (player1TurnBool){
+                //affichage du feu d'artifice
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
                 textViewGagant.setText(textJoueur1.getText());
+                //affichage du nom gagnant
                 YoYo.with(Techniques.Tada)
                         .duration(700)
                         .repeat(5)
                         .playOn(textViewGagant);
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(() -> {
+                    YoYo.with(Techniques.FlipOutX)
+                            .duration(700)
+                            .playOn(textViewGagant);
+                }, 4000);
 
                 nameViewModel.incrementPlayer1Score();
             }else{
+                //affichage du feu d'artifice
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
                 textViewGagant.setText(textJoueur2.getText());
+                //affichage du nom gagnant
                 YoYo.with(Techniques.Tada)
                         .duration(700)
                         .repeat(5)
                         .playOn(textViewGagant);
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(() -> {
+                    YoYo.with(Techniques.FlipOutX)
+                            .duration(700)
+                            .playOn(textViewGagant);
+                }, 4000);
 
                 nameViewModel.incrementPlayer2Score();
             }
