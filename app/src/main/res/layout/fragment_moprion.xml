@@ -253,23 +253,13 @@
         android:text="@string/rejouer"
         android:fontFamily="sans-serif-light"/>
 
-    <TextView
-        android:id="@+id/tvPolitiqueConfidentialite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/politique_de_confidentialit"
-        android:autoLink="web"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
-
-</LinearLayout>
+    </LinearLayout>
     <TextView
         android:id="@+id/nomGagnant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="100dp"
         android:textSize="100sp"
         android:textColor="@color/black"
         android:fontFamily="@font/log_wizard"
@@ -281,8 +271,8 @@
         android:id="@+id/matchNull"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="250dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="bottom|center"
         android:textSize="50sp"
         android:textColor="@color/black"
         android:fontFamily="@font/log_wizard"
@@ -299,4 +289,14 @@
         app:lottie_loop="false"
         android:visibility="gone"
         />
+
+    <TextView
+        android:id="@+id/tvPolitiqueConfidentialite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/politique_de_confidentialit"
+        android:autoLink="web"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center"/>
 </FrameLayout>

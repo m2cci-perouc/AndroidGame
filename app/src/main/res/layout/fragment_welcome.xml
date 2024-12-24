@@ -112,15 +112,17 @@
             android:text="@string/jouer"
             android:fontFamily="sans-serif-light"/>
 
-        <TextView
-            android:id="@+id/tvPolitiqueConfidentialite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/politique_de_confidentialit"
-            android:autoLink="web"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="130dp"
-            android:layout_marginBottom="10dp" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPolitiqueConfidentialite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/politique_de_confidentialit"
+        android:autoLink="web"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center"/>
 
 </FrameLayout>
