@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="25dp"
         android:gravity="center"
         android:text="@string/jeu_du_morpion"
         android:background="@color/black"
@@ -46,12 +46,6 @@
                 android:layout_marginVertical="15dp">
             </ImageView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
                 <TextView
                     android:id="@+id/textViewNomJoueur1"
                     android:layout_width="wrap_content"
@@ -59,8 +53,7 @@
                     tools:text="@string/fanny"
                     android:layout_marginHorizontal="0dp"
                     android:padding="15dp"
-                    android:paddingEnd="0dp"
-                    android:textSize="20sp"
+                    android:textSize="25sp"
                     android:textColor="@color/white"
                     android:background="@color/couleur_joueur1"
                     android:fontFamily="sans-serif-light"
@@ -72,15 +65,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="0dp"
-                    android:alpha="0.7"
-                    android:background="@color/couleur_joueur1"
                     android:fontFamily="sans-serif-light"
                     android:padding="15dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/couleur_joueur1"
+                    android:textSize="25sp"
                     android:textStyle="bold"
                     tools:text="0" />
-                </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -98,12 +90,6 @@
                 android:layout_marginVertical="15dp">
             </ImageView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
             <TextView
                 android:id="@+id/textViewNomJoueur2"
                 android:layout_width="wrap_content"
@@ -111,8 +97,7 @@
                 tools:text="@string/lucie"
                 android:layout_marginHorizontal="0dp"
                 android:padding="15dp"
-                android:paddingEnd="0dp"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:background="@color/couleur_joueur2"
                 android:fontFamily="sans-serif-light"
@@ -125,13 +110,11 @@
                     tools:text="0"
                     android:layout_marginHorizontal="0dp"
                     android:padding="15dp"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:background="@color/couleur_joueur2"
+                    android:layout_marginTop="5dp"
+                    android:textSize="25sp"
+                    android:textColor="@color/couleur_joueur2"
                     android:fontFamily="sans-serif-light"
-                    android:textStyle="bold"
-                    android:alpha="0.7"/>
-            </LinearLayout>
+                    android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -277,7 +260,7 @@
         android:textColor="@color/black"
         android:fontFamily="@font/log_wizard"
         android:textStyle="bold"
-        tools:text="@string/match_null"
+        tools:text="@string/match_nul"
         >
     </TextView>
     <com.airbnb.lottie.LottieAnimationView

@@ -13,5 +13,5 @@
     <string name="rejouer">Rejouer</string>
     <string name="round">round</string>
     <string name="politique_de_confidentialit">Politique de confidentialité</string>
-    <string name="match_null">Match null...</string>
+    <string name="match_nul">Match nul...</string>
 </resources>

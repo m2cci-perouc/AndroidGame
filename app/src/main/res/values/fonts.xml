@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
-    <font-family>
-        <font android:font="@font/hog_world" tools:targetApi="o" />
-        <font android:font="@font/log_wizard" tools:targetApi="o" />
-    </font-family>
-</resources>

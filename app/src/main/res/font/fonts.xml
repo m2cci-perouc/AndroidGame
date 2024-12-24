@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family name="MaFamilleDePolices"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <font android:font="@font/hog_world"/>
+        <font android:font="@font/log_wizard"/>
+</font-family>

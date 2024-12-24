@@ -424,10 +424,8 @@ public class MorpionFragment extends Fragment {
         // met de la transparence sur les noms
         if (player1Start){
             textJoueur2.setAlpha(0.2f);
-            scoreJoueur2.setAlpha(0.2f);
         }else {
             textJoueur1.setAlpha(0.2f);
-            scoreJoueur1.setAlpha(0.2f);
         }
         return player1Start;
     }
@@ -438,14 +436,10 @@ public class MorpionFragment extends Fragment {
         player1Turn = !player1Turn;
         if (player1Turn){
             textJoueur1.setAlpha(0.7f);
-            scoreJoueur1.setAlpha(0.7f);
             textJoueur2.setAlpha(0.2f);
-            scoreJoeur2.setAlpha(0.2f);
         }else {
             textJoueur1.setAlpha(0.2f);
-            scoreJoueur1.setAlpha(0.2f);
             textJoueur2.setAlpha(0.7f);
-            scoreJoeur2.setAlpha(0.7f);
         }
         return player1Turn;
     }
