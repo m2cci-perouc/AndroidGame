@@ -260,7 +260,7 @@ public class MorpionFragment extends Fragment {
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
             matchNull = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
             if (matchNull){
-                textViewMatchNull.setText("Match null...");
+                textViewMatchNull.setText("Match nul...");
                 YoYo.with(Techniques.SlideInDown)
                         .duration(2000)
                         .playOn(textViewMatchNull);
