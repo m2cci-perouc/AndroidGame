@@ -41,6 +41,7 @@ import java.util.Random;
 public class MorpionFragment extends Fragment {
 
     private MyViewModel nameViewModel;
+    private boolean estTermine = false;
     private ImageButton button1;
     private ImageButton button2;
     private ImageButton button3;
@@ -219,18 +220,24 @@ public class MorpionFragment extends Fragment {
             }
         });
 
-        buttonRejouer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        //rejouer partie
+        if (estTermine){
+            buttonRejouer.setEnabled(true);
+            buttonRejouer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                // Naviguer vers nouveau fragment morpion
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                MorpionFragment morpionFragment = MorpionFragment.newInstance();
-                fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
-                fragmentTransaction.commit();
-            }
-        });
+                    // Naviguer vers nouveau fragment morpion
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    MorpionFragment morpionFragment = MorpionFragment.newInstance();
+                    fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
+                    fragmentTransaction.commit();
+                }
+            });
+        }else{
+            buttonRejouer.setEnabled(false);
+        }
 
         // lien confidentialite cliquable
         tvPolitique.setOnClickListener(new View.OnClickListener() {
@@ -361,6 +368,7 @@ public class MorpionFragment extends Fragment {
             }
             if (plateauPlein){
                 matchNull = true;
+                estTermine = true;
             }
         }
         return matchNull;
@@ -380,6 +388,7 @@ public class MorpionFragment extends Fragment {
                     boutons[ligne * 3 + 1].getNumJoueur() == (joueurActuel) &&
                     boutons[ligne * 3 + 2].getNumJoueur() == (joueurActuel)) {
                 gagner = true;
+                estTermine = true;
                 break;
             }
         }
@@ -393,6 +402,7 @@ public class MorpionFragment extends Fragment {
                     boutons[colonne + 3].getNumJoueur() == (joueurActuel) &&
                     boutons[colonne + 6].getNumJoueur() == (joueurActuel)) {
                 gagner = true;
+                estTermine = true;
                 break;
             }
         }
@@ -403,12 +413,14 @@ public class MorpionFragment extends Fragment {
                 boutons[4].getNumJoueur() == (joueurActuel) &&
                 boutons[8].getNumJoueur() == (joueurActuel)) {
             gagner = true;
+            estTermine = true;
         }
         if (boutons[2] != null && boutons[4] != null && boutons[6] != null &&
                 boutons[2].getNumJoueur() == (joueurActuel) &&
                 boutons[4].getNumJoueur() == (joueurActuel) &&
                 boutons[6].getNumJoueur() == (joueurActuel)){
             gagner = true;
+            estTermine = true;
         }
         return gagner;
     }
