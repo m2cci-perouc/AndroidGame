@@ -1,128 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".WelcomeFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        tools:context=".WelcomeFragment">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        android:fontFamily="@font/hog_world"
+        android:gravity="center"
+        android:padding="25dp"
+        android:text="@string/jeu_du_morpion"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBasEnTete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="25dp"
-            android:gravity="center"
-            android:text="@string/jeu_du_morpion"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:fontFamily="@font/hog_world"/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/round_50px"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRightIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="100dp">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:alpha="0.7"
+        android:background="@color/couleur_joueur1"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:text="@string/joueur_1"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineGaucheBoutton"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/round_50px">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/joueur_1"
-                android:layout_marginHorizontal="15dp"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur1"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.7"
-                />
+    <EditText
+        android:id="@+id/nameJoueur1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/fanny"
+        android:minWidth="150dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/nameJoueur2"
+        app:layout_constraintDimensionRatio="5:2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/nameJoueur1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:minWidth="150dp"
-                android:hint="@string/fanny"
-                android:fontFamily="sans-serif-light"
-                />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/cross_50px"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guidelineRightIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:alpha="0.7"
+        android:background="@color/couleur_joueur2"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:text="@string/joueur_2"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineGaucheBoutton"
+        app:layout_constraintStart_toEndOf="@id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginVertical="50dp">
+    <EditText
+        android:id="@+id/nameJoueur2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/lucie"
+        android:minWidth="150dp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintDimensionRatio="5:2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/nameJoueur1" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/cross_50px">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/joueur_2"
-                android:layout_marginHorizontal="15dp"
-                android:padding="15dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur2"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.7"
-                />
-
-            <EditText
-                android:id="@+id/nameJoueur2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:minWidth="150dp"
-                android:hint="@string/lucie"
-                android:fontFamily="sans-serif-light"
-                />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/buttonJoueur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="50dp"
-            android:paddingHorizontal="24dp"
-            android:textSize="20sp"
-            android:backgroundTint="@color/black"
-            android:text="@string/jouer"
-            android:fontFamily="sans-serif-light"/>
-
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/buttonJoueur"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="sans-serif-light"
+        android:paddingHorizontal="24dp"
+        android:text="@string/jouer"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintDimensionRatio="5:2"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
+        app:layout_constraintStart_toStartOf="@+id/guidelineGaucheBoutton"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/tvPolitiqueConfidentialite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/politique_de_confidentialit"
+        android:layout_gravity="bottom|center"
         android:autoLink="web"
+        android:text="@string/politique_de_confidentialit"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="bottom|center"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHautPolicies" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRightIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHautPolicies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBasEnTete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineGaucheBoutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDroiteBoutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
