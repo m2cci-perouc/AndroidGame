@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_background"
     android:gravity="center">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/black"
         android:fontFamily="@font/hog_world"
         android:gravity="center"
         android:padding="25dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/round"
-        android:src="@drawable/round_50px"
+        android:src="@drawable/round_50px_black"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/cross"
-        android:src="@drawable/cross_50px"
+        android:src="@drawable/cross_50px_black"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
@@ -223,7 +223,8 @@
         android:id="@+id/buttonRejouer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:textColor="@color/white"
         android:fontFamily="sans-serif-light"
         android:paddingHorizontal="24dp"
         android:text="@string/rejouer"
@@ -238,9 +239,9 @@
         android:id="@+id/nomGagnant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="3dp"
         android:fontFamily="@font/log_wizard"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="100sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
@@ -255,10 +256,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:fontFamily="@font/log_wizard"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/match_nul" />
@@ -317,7 +318,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.59" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineDroiteBoutton"
