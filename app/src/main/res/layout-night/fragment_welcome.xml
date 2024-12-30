@@ -27,11 +27,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/round_50px_black"
-        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/guidelineRightIcon"
         app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBasEnTete" />
 
     <TextView
         android:id="@+id/textView"
@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
         app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBasEnTete" />
 
     <EditText
         android:id="@+id/nameJoueur1"
@@ -57,22 +57,22 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/white"
         android:hint="@string/fanny"
         android:minWidth="150dp"
         android:padding="15dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/nameJoueur2"
         app:layout_constraintDimensionRatio="5:2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBasEnTete" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/cross_50px_black"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBasName"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/guidelineRightIcon"
         app:layout_constraintHorizontal_bias="0.5"
@@ -92,7 +92,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBasName"
         app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
         app:layout_constraintStart_toEndOf="@id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -103,11 +103,11 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:fontFamily="sans-serif-light"
-        android:textColor="@color/white"
         android:hint="@string/lucie"
         android:minWidth="150dp"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBasName"
         app:layout_constraintDimensionRatio="5:2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -168,6 +168,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBasName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.72" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineGaucheBoutton"
