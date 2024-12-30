@@ -13,10 +13,11 @@
         android:layout_height="0dp"
         android:fontFamily="@font/hog_world"
         android:gravity="center"
-        android:padding="25dp"
+        android:paddingVertical="10dp"
         android:text="@string/jeu_du_morpion"
         android:textColor="@color/white"
         android:textSize="30sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBasEnTete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +27,12 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:contentDescription="@string/round"
         android:src="@drawable/round_50px_black"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur1"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineGauchePlateau"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineBasEnTete" />
 
     <TextView
         android:id="@+id/textViewNomJoueur1"
@@ -41,13 +41,13 @@
         android:alpha="0.85"
         android:background="@color/couleur_joueur1"
         android:fontFamily="sans-serif-light"
-        android:padding="10dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="15dp"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur1"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineGauchePlateau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         tools:text="@string/fanny" />
@@ -56,14 +56,13 @@
         android:id="@+id/textViewScoreJoueur1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-light"
         android:padding="15dp"
         android:textColor="@color/couleur_joueur1"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineGauchePlateau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur1"
         tools:text="0" />
@@ -72,13 +71,12 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:contentDescription="@string/cross"
         android:src="@drawable/cross_50px_black"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineDroitePlateau"
+        app:layout_constraintTop_toTopOf="@+id/guidelineBasEnTete" />
 
     <TextView
         android:id="@+id/textViewNomJoueur2"
@@ -87,14 +85,14 @@
         android:alpha="0.85"
         android:background="@color/couleur_joueur2"
         android:fontFamily="sans-serif-light"
-        android:padding="10dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="15dp"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintStart_toStartOf="@+id/guidelineDroitePlateau"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         tools:text="@string/lucie" />
 
@@ -102,15 +100,14 @@
         android:id="@+id/textViewScoreJoueur2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-light"
         android:padding="15dp"
         android:textColor="@color/couleur_joueur2"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintStart_toStartOf="@+id/guidelineDroitePlateau"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur2"
         tools:text="0" />
 
@@ -120,9 +117,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tvPolitiqueConfidentialite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineHautPlateau">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
         <!-- Ligne 1 -->
         <ImageButton
             android:id="@+id/button_1"
@@ -224,23 +222,22 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/cardview_dark_background"
-        android:textColor="@color/white"
         android:fontFamily="sans-serif-light"
-        android:paddingHorizontal="24dp"
         android:text="@string/rejouer"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
-        app:layout_constraintDimensionRatio="8:4"
-        app:layout_constraintEnd_toEndOf="@id/guidelineDroiteBoutton"
-        app:layout_constraintStart_toStartOf="@+id/guidelineGaucheBoutton"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintDimensionRatio="10:3"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteBoutton"
+        app:layout_constraintStart_toStartOf="@+id/guidelineDroitePlateau"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScoreJoueur2" />
 
     <TextView
         android:id="@+id/nomGagnant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="67dp"
         android:fontFamily="@font/log_wizard"
         android:textColor="@color/black"
         android:textSize="100sp"
@@ -260,7 +257,7 @@
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintBottom_toTopOf="@+id/tvPolitiqueConfidentialite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/match_nul" />
@@ -291,7 +288,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.92" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineBasEnTete"
@@ -308,6 +305,13 @@
         app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBasNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMilieu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -315,11 +319,25 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineGauchePlateau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDroitePlateau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineGaucheBoutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.59" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineDroiteBoutton"
