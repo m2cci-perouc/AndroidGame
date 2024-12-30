@@ -1,285 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:gravity="center"
-        android:text="@string/jeu_du_morpion"
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/black"
+        android:fontFamily="@font/hog_world"
+        android:gravity="center"
+        android:padding="25dp"
+        android:text="@string/jeu_du_morpion"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:fontFamily="@font/hog_world"/>
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBasEnTete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/round"
+        android:src="@drawable/round_50px"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginHorizontal="10dp">
+    <TextView
+        android:id="@+id/textViewNomJoueur1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.85"
+        android:background="@color/couleur_joueur1"
+        android:fontFamily="sans-serif-light"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        tools:text="@string/fanny" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/round"
-                android:src="@drawable/round_50px"
-                android:layout_marginVertical="15dp">
-            </ImageView>
+    <TextView
+        android:id="@+id/textViewScoreJoueur1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:textColor="@color/couleur_joueur1"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur1"
+        tools:text="0" />
 
-                <TextView
-                    android:id="@+id/textViewNomJoueur1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/fanny"
-                    android:layout_marginHorizontal="0dp"
-                    android:padding="15dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/white"
-                    android:background="@color/couleur_joueur1"
-                    android:fontFamily="sans-serif-light"
-                    android:textStyle="bold"
-                    android:alpha="0.7"
-                />
-                <TextView
-                    android:id="@+id/textViewScoreJoueur1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="0dp"
-                    android:fontFamily="sans-serif-light"
-                    android:padding="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/couleur_joueur1"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    tools:text="0" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/cross"
+        android:src="@drawable/cross_50px"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/textViewNomJoueur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.85"
+        android:background="@color/couleur_joueur2"
+        android:fontFamily="sans-serif-light"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:text="@string/lucie" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginHorizontal="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/cross"
-                android:src="@drawable/cross_50px"
-                android:layout_marginVertical="15dp">
-            </ImageView>
-
-            <TextView
-                android:id="@+id/textViewNomJoueur2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@string/lucie"
-                android:layout_marginHorizontal="0dp"
-                android:padding="15dp"
-                android:textSize="25sp"
-                android:textColor="@color/white"
-                android:background="@color/couleur_joueur2"
-                android:fontFamily="sans-serif-light"
-                android:textStyle="bold"
-                android:alpha="0.7" />
-                <TextView
-                    android:id="@+id/textViewScoreJoueur2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="0"
-                    android:layout_marginHorizontal="0dp"
-                    android:padding="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/couleur_joueur2"
-                    android:fontFamily="sans-serif-light"
-                    android:textStyle="bold"/>
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewScoreJoueur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:textColor="@color/couleur_joueur2"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur2"
+        tools:text="0" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="0dp"
         android:layout_margin="30dp"
-        >
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineHautPlateau">
         <!-- Ligne 1 -->
         <ImageButton
             android:id="@+id/button_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
             android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
             android:layout_toEndOf="@+id/button_1"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
             android:layout_toEndOf="@+id/button_2"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
 
         <!-- Ligne 2 -->
         <ImageButton
             android:id="@+id/button_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
             android:layout_below="@+id/button_1"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
-            android:layout_toEndOf ="@+id/button_4"
             android:layout_below="@id/button_2"
+            android:layout_toEndOf="@+id/button_4"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
-            android:layout_toEndOf="@+id/button_5"
             android:layout_below="@id/button_3"
+            android:layout_toEndOf="@+id/button_5"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
         <!-- Ligne 3 -->
         <ImageButton
             android:id="@+id/button_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
             android:layout_below="@+id/button_4"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
-            android:layout_toEndOf="@id/button_7"
             android:layout_below="@+id/button_5"
+            android:layout_toEndOf="@id/button_7"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
+
         <ImageButton
             android:id="@+id/button_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cross"
-            android:src="@drawable/encadre"
-            android:backgroundTint="@color/white"
-            android:layout_toEndOf="@id/button_8"
             android:layout_below="@+id/button_6"
+            android:layout_toEndOf="@id/button_8"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/cross"
             android:padding="0dp"
-            />
+            android:src="@drawable/encadre" />
     </RelativeLayout>
 
     <Button
         android:id="@+id/buttonRejouer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
-        android:paddingHorizontal="24dp"
-        android:textSize="20sp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="@color/black"
+        android:fontFamily="sans-serif-light"
+        android:paddingHorizontal="24dp"
         android:text="@string/rejouer"
-        android:fontFamily="sans-serif-light"/>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintDimensionRatio="8:4"
+        app:layout_constraintEnd_toEndOf="@id/guidelineDroiteBoutton"
+        app:layout_constraintStart_toStartOf="@+id/guidelineGaucheBoutton"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-    </LinearLayout>
     <TextView
         android:id="@+id/nomGagnant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
-        android:textSize="100sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/log_wizard"
+        android:textColor="@color/black"
+        android:textSize="100sp"
         android:textStyle="bold"
-        tools:text="@string/fanny"
-        >
-    </TextView>
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        tools:text="@string/fanny" />
+
     <TextView
         android:id="@+id/matchNull"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:layout_gravity="bottom|center"
-        android:textSize="50sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/log_wizard"
+        android:textColor="@color/black"
+        android:textSize="50sp"
         android:textStyle="bold"
-        tools:text="@string/match_nul"
-        >
-    </TextView>
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHautPolicies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/match_nul" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_rawRes="@raw/fireworks"
+        android:visibility="gone"
         app:lottie_autoPlay="false"
         app:lottie_loop="false"
-        android:visibility="gone"
-        />
+        app:lottie_rawRes="@raw/fireworks" />
 
     <TextView
         android:id="@+id/tvPolitiqueConfidentialite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/politique_de_confidentialit"
+        android:layout_gravity="bottom|center"
         android:autoLink="web"
+        android:text="@string/politique_de_confidentialit"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="bottom|center"/>
-</FrameLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineHautPolicies" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHautPolicies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBasEnTete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHautPlateau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMilieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineGaucheBoutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDroiteBoutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
