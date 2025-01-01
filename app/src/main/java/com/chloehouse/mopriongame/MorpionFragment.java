@@ -315,8 +315,8 @@ public class MorpionFragment extends Fragment {
         // fonction verifie si toutes les cases sont jouees ou si un joueur a aligne ses cases
 
         boolean matchNull = false;
-        Boolean gagne;
-        Boolean plateauPlein = true;
+        boolean gagne;
+        boolean plateauPlein = true;
 
         //test si gagné
         gagne = testAlignement(boutons, player1TurnBool);
@@ -326,6 +326,9 @@ public class MorpionFragment extends Fragment {
                 //affichage du feu d'artifice
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
+                //change nom gagnant et couleur
+                int color1 = getResources().getColor(R.color.couleur_joueur1, requireContext().getTheme());
+                textViewGagant.setTextColor(color1);
                 textViewGagant.setText(textJoueur1.getText());
                 //affichage du nom gagnant
                 YoYo.with(Techniques.Tada)
@@ -344,6 +347,9 @@ public class MorpionFragment extends Fragment {
                 //affichage du feu d'artifice
                 lottieAnimationView.setVisibility(View.VISIBLE);
                 lottieAnimationView.playAnimation();
+                //change nom gagnant et couleur
+                int color2 = getResources().getColor(R.color.couleur_joueur2, requireContext().getTheme());
+                textViewGagant.setTextColor(color2);
                 textViewGagant.setText(textJoueur2.getText());
                 //affichage du nom gagnant
                 YoYo.with(Techniques.Tada)
@@ -368,16 +374,15 @@ public class MorpionFragment extends Fragment {
             }
             if (plateauPlein){
                 matchNull = true;
-                estTermine = true;
             }
         }
         return matchNull;
     }
 
-    private Boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
+    private boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
         // fonction test si joueur a aligne ses cases
         boolean gagner = false;
-        Integer joueurActuel = player1TurnBool ? 1 : 2;
+        int joueurActuel = player1TurnBool ? 1 : 2;
 
         // test Ligne
         for (int ligne = 0; ligne < 3; ligne++) {
@@ -388,7 +393,6 @@ public class MorpionFragment extends Fragment {
                     boutons[ligne * 3 + 1].getNumJoueur() == (joueurActuel) &&
                     boutons[ligne * 3 + 2].getNumJoueur() == (joueurActuel)) {
                 gagner = true;
-                estTermine = true;
                 break;
             }
         }
@@ -402,7 +406,6 @@ public class MorpionFragment extends Fragment {
                     boutons[colonne + 3].getNumJoueur() == (joueurActuel) &&
                     boutons[colonne + 6].getNumJoueur() == (joueurActuel)) {
                 gagner = true;
-                estTermine = true;
                 break;
             }
         }
@@ -413,19 +416,17 @@ public class MorpionFragment extends Fragment {
                 boutons[4].getNumJoueur() == (joueurActuel) &&
                 boutons[8].getNumJoueur() == (joueurActuel)) {
             gagner = true;
-            estTermine = true;
         }
         if (boutons[2] != null && boutons[4] != null && boutons[6] != null &&
                 boutons[2].getNumJoueur() == (joueurActuel) &&
                 boutons[4].getNumJoueur() == (joueurActuel) &&
                 boutons[6].getNumJoueur() == (joueurActuel)){
             gagner = true;
-            estTermine = true;
         }
         return gagner;
     }
 
-    private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2,
+    private boolean firstPlayer(TextView textJoueur1, TextView textJoueur2,
                                 TextView scoreJoueur1, TextView scoreJoueur2){
         //player1Start true si player1 tiré au sort pour commencer
         boolean player1Start;
@@ -442,7 +443,7 @@ public class MorpionFragment extends Fragment {
         return player1Start;
     }
 
-    private Boolean changerTour(TextView textJoueur1, TextView textJoueur2,
+    private boolean changerTour(TextView textJoueur1, TextView textJoueur2,
                                 TextView scoreJoueur1, TextView scoreJoeur2,
                                 Boolean player1Turn){
         player1Turn = !player1Turn;
