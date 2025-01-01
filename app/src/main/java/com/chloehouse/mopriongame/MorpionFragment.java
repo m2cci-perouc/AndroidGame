@@ -222,6 +222,7 @@ public class MorpionFragment extends Fragment {
 
         //rejouer partie
         if (estTermine){
+            Log.i("Chloe", "active bouton rejouer");
             buttonRejouer.setEnabled(true);
             buttonRejouer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -267,6 +268,9 @@ public class MorpionFragment extends Fragment {
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
             matchNull = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
             if (matchNull){
+                //activer bouton rejouer
+                estTermine = true;
+                //animation match nul
                 textViewMatchNull.setText("Match nul...");
                 YoYo.with(Techniques.SlideInDown)
                         .duration(2000)
@@ -315,13 +319,16 @@ public class MorpionFragment extends Fragment {
         // fonction verifie si toutes les cases sont jouees ou si un joueur a aligne ses cases
 
         boolean matchNull = false;
-        boolean gagne;
-        boolean plateauPlein = true;
+        Boolean gagne;
+        Boolean plateauPlein = true;
 
         //test si gagné
         gagne = testAlignement(boutons, player1TurnBool);
         //personalise le message avec nom du joueur
         if (gagne){
+            //activer bouton rejouer
+            estTermine = true;
+            //animation victoire
             if (player1TurnBool){
                 //affichage du feu d'artifice
                 lottieAnimationView.setVisibility(View.VISIBLE);
@@ -379,10 +386,10 @@ public class MorpionFragment extends Fragment {
         return matchNull;
     }
 
-    private boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
+    private Boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
         // fonction test si joueur a aligne ses cases
         boolean gagner = false;
-        int joueurActuel = player1TurnBool ? 1 : 2;
+        Integer joueurActuel = player1TurnBool ? 1 : 2;
 
         // test Ligne
         for (int ligne = 0; ligne < 3; ligne++) {
@@ -426,7 +433,7 @@ public class MorpionFragment extends Fragment {
         return gagner;
     }
 
-    private boolean firstPlayer(TextView textJoueur1, TextView textJoueur2,
+    private Boolean firstPlayer(TextView textJoueur1, TextView textJoueur2,
                                 TextView scoreJoueur1, TextView scoreJoueur2){
         //player1Start true si player1 tiré au sort pour commencer
         boolean player1Start;
@@ -443,7 +450,7 @@ public class MorpionFragment extends Fragment {
         return player1Start;
     }
 
-    private boolean changerTour(TextView textJoueur1, TextView textJoueur2,
+    private Boolean changerTour(TextView textJoueur1, TextView textJoueur2,
                                 TextView scoreJoueur1, TextView scoreJoeur2,
                                 Boolean player1Turn){
         player1Turn = !player1Turn;
