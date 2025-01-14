@@ -41,7 +41,6 @@ import java.util.Random;
 public class MorpionFragment extends Fragment {
 
     private MyViewModel nameViewModel;
-    private boolean estTermine = false;
     private ImageButton button1;
     private ImageButton button2;
     private ImageButton button3;
@@ -116,10 +115,12 @@ public class MorpionFragment extends Fragment {
             scoreJoueur2.setText(String.valueOf(scores.second));
         });
 
-        // choisi au hasard le premier joueur
-        // player1Turn si c'est au joueur 1 de jouer
-        final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2, scoreJoueur1, scoreJoueur2)};
+        //desactive bouton rejouer
+        buttonRejouer.setEnabled(false);
 
+        // choisi au hasard le premier joueur
+        // player1Turn vrai si c'est au joueur 1 de jouer
+        final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2, scoreJoueur1, scoreJoueur2)};
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,26 +221,6 @@ public class MorpionFragment extends Fragment {
             }
         });
 
-        //rejouer partie
-        if (estTermine){
-            Log.i("Chloe", "active bouton rejouer");
-            buttonRejouer.setEnabled(true);
-            buttonRejouer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    // Naviguer vers nouveau fragment morpion
-                    FragmentManager fragmentManager = getParentFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    MorpionFragment morpionFragment = MorpionFragment.newInstance();
-                    fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
-                    fragmentTransaction.commit();
-                }
-            });
-        }else{
-            buttonRejouer.setEnabled(false);
-        }
-
         // lien confidentialite cliquable
         tvPolitique.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,6 +228,20 @@ public class MorpionFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://www.privacypolicies.com/live/671e4fb6-889b-4ba4-ad6f-0387e9840aaa"));
                 startActivity(intent);
+            }
+        });
+
+        //ecoute bouton rejouer
+        buttonRejouer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Naviguer vers nouveau fragment morpion
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MorpionFragment morpionFragment = MorpionFragment.newInstance();
+                fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
+                fragmentTransaction.commit();
             }
         });
     }
@@ -263,18 +258,12 @@ public class MorpionFragment extends Fragment {
         if (boutonVide(button)){
             ButtonCaracteristique[] mesBoutons = {butCaract1, butCaract2, butCaract3, butCaract4,
                     butCaract5, butCaract6, butCaract7, butCaract8,butCaract9 };
-            boolean matchNull;
+            int valeurFin;
 
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
-            matchNull = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
-            if (matchNull){
-                //activer bouton rejouer
-                estTermine = true;
-                //animation match nul
-                textViewMatchNull.setText("Match nul...");
-                YoYo.with(Techniques.SlideInDown)
-                        .duration(2000)
-                        .playOn(textViewMatchNull);
+            valeurFin = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
+            if(valeurFin == 1){
+                partieTermine(buttonRejouer);
             }
             player1Turn[0] = changerTour(textJoueur1,  textJoueur2, scoreJoueur1, scoreJoueur2,player1Turn[0]);
         }
@@ -314,20 +303,19 @@ public class MorpionFragment extends Fragment {
         return false;
     }
 
-    private boolean verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
+    private int verifierFinPartie(ButtonCaracteristique[] boutons, Boolean player1TurnBool,
                                      TextView textJoueur1, TextView textJoueur2) {
         // fonction verifie si toutes les cases sont jouees ou si un joueur a aligne ses cases
 
-        boolean matchNull = false;
         Boolean gagne;
         Boolean plateauPlein = true;
+        int valeurFin = 0;
 
         //test si gagné
         gagne = testAlignement(boutons, player1TurnBool);
         //personalise le message avec nom du joueur
         if (gagne){
-            //activer bouton rejouer
-            estTermine = true;
+            valeurFin = 1;
             //animation victoire
             if (player1TurnBool){
                 //affichage du feu d'artifice
@@ -380,10 +368,15 @@ public class MorpionFragment extends Fragment {
                 }
             }
             if (plateauPlein){
-                matchNull = true;
+                valeurFin = 1;
+                //animation match nul
+                textViewMatchNull.setText("Match nul...");
+                YoYo.with(Techniques.SlideInDown)
+                        .duration(2000)
+                        .playOn(textViewMatchNull);
             }
         }
-        return matchNull;
+        return valeurFin;
     }
 
     private Boolean testAlignement(ButtonCaracteristique[] boutons, Boolean player1TurnBool){
@@ -462,5 +455,21 @@ public class MorpionFragment extends Fragment {
             textJoueur2.setAlpha(0.85f);
         }
         return player1Turn;
+    }
+
+    private void partieTermine (Button buttonRejouer){
+        //active bouton rejouer
+        Log.i("Chloe", "active bouton rejouer");
+        buttonRejouer.setEnabled(true);
+        //desactive les cases du plateau
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+        button5.setEnabled(false);
+        button6.setEnabled(false);
+        button7.setEnabled(false);
+        button8.setEnabled(false);
+        button9.setEnabled(false);
     }
 }
