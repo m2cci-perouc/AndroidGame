@@ -14,4 +14,5 @@
     <string name="round">round</string>
     <string name="politique_de_confidentialit">Politique de confidentialité</string>
     <string name="match_nul">Match nul...</string>
+    <string name="underscore">-</string>
 </resources>

@@ -48,7 +48,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         tools:text="@string/fanny" />
@@ -59,15 +58,27 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-light"
-        android:padding="15dp"
         android:textColor="@color/couleur_joueur1"
-        android:textSize="22sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guidelineGaucheScore"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur1"
         tools:text="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:text="@string/underscore"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteScore"
+        app:layout_constraintStart_toStartOf="@+id/guidelineGaucheScore"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur1" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -75,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/cross"
-        android:src="@drawable/cross_50px"
+        android:src="@drawable/cross_80px_vide"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
@@ -94,7 +105,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewScoreJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         tools:text="@string/lucie" />
@@ -105,13 +115,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-light"
-        android:padding="15dp"
         android:textColor="@color/couleur_joueur2"
-        android:textSize="22sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineMilieu"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDroiteScore"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomJoueur2"
         tools:text="0" />
 
@@ -119,7 +127,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="35dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -289,6 +297,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineGaucheScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -299,11 +314,11 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineGaucheBoutton"
+        android:id="@+id/guidelineDroiteScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.59" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineDroiteBoutton"
