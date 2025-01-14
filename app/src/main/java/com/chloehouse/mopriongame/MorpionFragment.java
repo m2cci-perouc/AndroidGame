@@ -16,6 +16,7 @@ import android.os.Bundle;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -26,10 +27,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -62,6 +65,7 @@ public class MorpionFragment extends Fragment {
     private LottieAnimationView lottieAnimationView;
     private TextView textViewGagant;
     private TextView textViewMatchNull;
+    private boolean estTerminee = false;
 
     public static MorpionFragment newInstance() {
         return new MorpionFragment();
@@ -78,6 +82,7 @@ public class MorpionFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_moprion, container, false);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -242,6 +247,22 @@ public class MorpionFragment extends Fragment {
                 MorpionFragment morpionFragment = MorpionFragment.newInstance();
                 fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
                 fragmentTransaction.commit();
+            }
+        });
+
+        //rejouer clique n'importe ou sur ecran
+        ConstraintLayout rootView = view.findViewById(R.id.fragment_morpion);
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (estTerminee) {
+                    // Naviguer vers nouveau fragment morpion
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    MorpionFragment morpionFragment = MorpionFragment.newInstance();
+                    fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
+                    fragmentTransaction.commit();
+                }
             }
         });
     }
@@ -461,6 +482,8 @@ public class MorpionFragment extends Fragment {
         //active bouton rejouer
         Log.i("Chloe", "active bouton rejouer");
         buttonRejouer.setEnabled(true);
+
+        estTerminee = true;
         //desactive les cases du plateau
         button1.setEnabled(false);
         button2.setEnabled(false);
