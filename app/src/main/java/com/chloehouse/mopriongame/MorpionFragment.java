@@ -96,7 +96,6 @@ public class MorpionFragment extends Fragment {
         button7 = view.findViewById(R.id.button_7);
         button8 = view.findViewById(R.id.button_8);
         button9 = view.findViewById(R.id.button_9);
-        Button buttonRejouer = view.findViewById(R.id.buttonRejouer);
         TextView textJoueur1 = view.findViewById(R.id.textViewNomJoueur1);
         TextView textJoueur2 = view.findViewById(R.id.textViewNomJoueur2);
         TextView scoreJoueur1 = view.findViewById(R.id.textViewScoreJoueur1);
@@ -120,9 +119,6 @@ public class MorpionFragment extends Fragment {
             scoreJoueur2.setText(String.valueOf(scores.second));
         });
 
-        //desactive bouton rejouer
-        buttonRejouer.setEnabled(false);
-
         // choisi au hasard le premier joueur
         // player1Turn vrai si c'est au joueur 1 de jouer
         final Boolean[] player1Turn = {firstPlayer(textJoueur1, textJoueur2, scoreJoueur1, scoreJoueur2)};
@@ -130,7 +126,7 @@ public class MorpionFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button1, butCaract1,buttonRejouer,
+                jouerUneCase(button1, butCaract1,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -141,7 +137,7 @@ public class MorpionFragment extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button2, butCaract2,buttonRejouer,
+                jouerUneCase(button2, butCaract2,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -152,7 +148,7 @@ public class MorpionFragment extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button3, butCaract3,buttonRejouer,
+                jouerUneCase(button3, butCaract3,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -163,7 +159,7 @@ public class MorpionFragment extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button4, butCaract4,buttonRejouer,
+                jouerUneCase(button4, butCaract4,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -174,7 +170,7 @@ public class MorpionFragment extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button5, butCaract5,buttonRejouer,
+                jouerUneCase(button5, butCaract5,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -185,7 +181,7 @@ public class MorpionFragment extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button6,butCaract6,buttonRejouer,
+                jouerUneCase(button6,butCaract6,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -196,7 +192,7 @@ public class MorpionFragment extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button7, butCaract7,buttonRejouer,
+                jouerUneCase(button7, butCaract7,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -207,7 +203,7 @@ public class MorpionFragment extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button8, butCaract8,buttonRejouer,
+                jouerUneCase(button8, butCaract8,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -218,7 +214,7 @@ public class MorpionFragment extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jouerUneCase(button9, butCaract9,buttonRejouer,
+                jouerUneCase(button9, butCaract9,
                         R.drawable.cross_80px, R.drawable.round_80px,
                         player1Turn, player1Turn[0],
                         textJoueur1,  textJoueur2,
@@ -233,20 +229,6 @@ public class MorpionFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://www.privacypolicies.com/live/671e4fb6-889b-4ba4-ad6f-0387e9840aaa"));
                 startActivity(intent);
-            }
-        });
-
-        //ecoute bouton rejouer
-        buttonRejouer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Naviguer vers nouveau fragment morpion
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                MorpionFragment morpionFragment = MorpionFragment.newInstance();
-                fragmentTransaction.replace(R.id.fragment_container_view, morpionFragment);
-                fragmentTransaction.commit();
             }
         });
 
@@ -269,7 +251,6 @@ public class MorpionFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     private void jouerUneCase(ImageButton button, ButtonCaracteristique butCaract,
-                              Button buttonRejouer,
                               @DrawableRes int imageCroix,
                               @DrawableRes int imageRond,
                               Boolean[] player1Turn,
@@ -284,7 +265,7 @@ public class MorpionFragment extends Fragment {
             updateImage(button, butCaract, imageCroix, imageRond, player1TurnBool, textJoueur1, textJoueur2);
             valeurFin = verifierFinPartie(mesBoutons, player1TurnBool, textJoueur1, textJoueur2);
             if(valeurFin == 1){
-                partieTermine(buttonRejouer);
+                partieTermine();
             }
             player1Turn[0] = changerTour(textJoueur1,  textJoueur2, scoreJoueur1, scoreJoueur2,player1Turn[0]);
         }
@@ -478,11 +459,8 @@ public class MorpionFragment extends Fragment {
         return player1Turn;
     }
 
-    private void partieTermine (Button buttonRejouer){
-        //active bouton rejouer
-        Log.i("Chloe", "active bouton rejouer");
-        buttonRejouer.setEnabled(true);
-
+    private void partieTermine (){
+        //active rejouer cliquable
         estTerminee = true;
         //desactive les cases du plateau
         button1.setEnabled(false);
