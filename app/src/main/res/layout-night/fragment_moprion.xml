@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/round"
-        android:src="@drawable/round_50px_black"
+        android:src="@drawable/round_65px_vide_black"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineMilieu"
         app:layout_constraintStart_toStartOf="parent"
