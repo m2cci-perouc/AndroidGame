@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:contentDescription="@string/cross"
-        android:src="@drawable/cross_50px"
+        android:src="@drawable/cross_65px_vide"
         app:layout_constraintBottom_toTopOf="@+id/textViewNomJoueur2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineDroitePlateau"
